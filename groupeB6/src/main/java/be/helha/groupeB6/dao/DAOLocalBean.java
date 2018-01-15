@@ -23,7 +23,7 @@ import be.helha.groupeB6.entities.Nouvelle;
 @LocalBean
 public class DAOLocalBean implements Serializable {
 	
-	@PersistenceContext(unitName="GROUPEB6JTA")
+	@PersistenceContext(unitName="dbb6")
 	private EntityManager em;
 
 	
