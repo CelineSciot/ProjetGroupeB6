@@ -1,5 +1,5 @@
 package be.helha.groupeB6.entities;
 
-public class Essai {
+public class Don {
 
 }
