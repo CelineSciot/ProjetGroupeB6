@@ -8,6 +8,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 import be.helha.groupeB6.entities.Utilisateur;
+import be.helha.groupeB6.sessionejb.GestionUtilisateurEJB;
 
 
 @Named
@@ -21,23 +22,28 @@ public class UtilisateurConstrol {
 	private Date dateNaissance;
 	
 	@EJB
+	private GestionUtilisateurEJB gestionUtilisateur;
 	
-	/*public List<Utilisateur> doUtil(){
-		return gestionUtilisateur.selectAll();
+	public List<Utilisateur> doUtil(){
+		return gestionUtilisateur.SelectionnerUtilisateur();
 	}
 	
-	public String ShowUser(Utilisateur u) {
-		utilisateur= gestionUtilisateur.showUser(u);
-		return"userinformation.xhtml";
-	}
-	
-	public void AjouterUtilisateur() {
-		gestionUtilisateur.addUtilisateur(int numero, int numTel, String nom, String prenom, String mail, String mdp, String nationalite, Date dateNaissance);
+	public void AjouterUtilisateur(Utilisateur u) {
+		gestionUtilisateur.ajouterUtilisateur(u);
 		this.numero=0;
 		this.numTel=0;
 		this.nom="";
-		
-	}*/
+		this.prenom="";
+		this.mail="";
+		this.mdp="";
+		this.nationalite="";
+		this.dateNaissance= null;	
+	}
+	
+	public void SupprimerUtilisateur(Utilisateur u) {
+		gestionUtilisateur.supprimerUtilisateur(u);
+	}
+	
 
 	public int getNumero() {
 		return numero;
