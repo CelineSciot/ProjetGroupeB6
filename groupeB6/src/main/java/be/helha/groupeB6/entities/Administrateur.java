@@ -13,9 +13,9 @@ public class Administrateur extends Utilisateur implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Administrateur(int numero, int numTel, String nom, String prenom, String mail, String mdp,
+	public Administrateur( String nom, String prenom, String mail,String numTel, String mdp,
 			String nationalite, Date dateNaissance) {
-		super(numero, numTel, nom, prenom, mail, mdp, nationalite, dateNaissance);
+		super( nom, prenom, mail,  numTel,mdp, nationalite, dateNaissance);
 		// TODO Auto-generated constructor stub
 	}
 

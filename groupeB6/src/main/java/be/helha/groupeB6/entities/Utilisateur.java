@@ -20,8 +20,8 @@ public class Utilisateur implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	private int numero, numTel;
-	private String nom,prenom,mail;
+	
+	private String nom,prenom,mail,numTel;
 	private String mdp,nationalite;
 	private Date dateNaissance;
 	
@@ -34,9 +34,8 @@ public class Utilisateur implements Serializable{
 	@OneToMany(cascade=CascadeType.ALL)
 	private Set<Evenement> evenements = new HashSet<Evenement>();
 
-	public Utilisateur(int numero, int numTel, String nom, String prenom, String mail, String mdp, String nationalite, Date dateNaissance) {
+	public Utilisateur( String nom, String prenom, String mail, String numTel,String mdp, String nationalite, Date dateNaissance) {
 		super();
-		this.numero = numero;
 		this.numTel = numTel;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -56,19 +55,12 @@ public class Utilisateur implements Serializable{
 		this.id = id;
 	}
 
-	public int getNumero() {
-		return numero;
-	}
 
-	public void setNumero(int numero) {
-		this.numero = numero;
-	}
-
-	public int getNumTel() {
+	public String getNumTel() {
 		return numTel;
 	}
 
-	public void setNumTel(int numTel) {
+	public void setNumTel(String numTel) {
 		this.numTel = numTel;
 	}
 
@@ -153,7 +145,7 @@ public class Utilisateur implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Utilisateur [id=" + id + ", numero=" + numero + ", numTel=" + numTel + ", nom=" + nom + ", prenom="
+		return "Utilisateur [id=" + id + ", numTel=" + numTel + ", nom=" + nom + ", prenom="
 				+ prenom + ", mail=" + mail + ", mdp=" + mdp + ", nationalite=" + nationalite + ", dateNaissance=" + dateNaissance + "]";
 	}
 	
