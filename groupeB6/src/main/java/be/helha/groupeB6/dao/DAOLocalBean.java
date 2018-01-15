@@ -15,6 +15,7 @@ import be.helha.groupeB6.entities.Administrateur;
 import be.helha.groupeB6.entities.Adresse;
 import be.helha.groupeB6.entities.Utilisateur;
 import be.helha.groupeB6.entities.Don;
+import be.helha.groupeB6.entities.Nouvelle;
 
 @SuppressWarnings("unchecked")
 @Stateless
@@ -31,9 +32,7 @@ public class DAOLocalBean implements Serializable {
 	}
 	
 	//RECHERCHE
-	public Utilisateur rechercherUtilisateur(Utilisateur u)
-	{
-
+	public Utilisateur rechercherUtilisateur(Utilisateur u){
 		String str= "SELECT u FROM Utilisateur u WHERE u.mail=:Nom";
 		Query qNomUtil = em.createQuery(str);
 		qNomUtil.setParameter("Nom", u.getMail());
@@ -42,20 +41,15 @@ public class DAOLocalBean implements Serializable {
 	
 	}
 	
-	public Administrateur rechercherAdministrateur(Administrateur a)
-	{
-/*
-		String str= "SELECT p FROM Utilisateur p WHERE p.login=:Nom";
+	public Administrateur rechercherAdministrateur(Administrateur a){
+		String str= "SELECT p FROM Administrateur p WHERE p.mail=:Nom";
 		Query qNom = em.createQuery(str);
-		qNom.setParameter("Nom", p.getLogin());
-		List<Utilisateur> result= (List<Utilisateur>)qNom.getResultList();
+		qNom.setParameter("Nom", a.getMail());
+		List<Administrateur> result= (List<Administrateur>)qNom.getResultList();
 		return result.get(0);
-	*/
-		return null;
 	}
 	
 	public Utilisateur rechercherUtilisateurAdresse(Utilisateur u) {
-
 		String strA= "SELECT p FROM Utilisateur p inner join Adresse a on p.adresse = a.id WHERE a.rue=:Rue";
 		Query qAdr = em.createQuery(strA);
 		qAdr.setParameter("Rue", u.getDomicile().getRue());
@@ -63,10 +57,8 @@ public class DAOLocalBean implements Serializable {
 		return result.get(0);
 	}
 	
-	//Changer le nom de la liste des DONs
-	public List<Don> rechercherDonParUtilisateur(Utilisateur u)
-	{
-		String strA= "select p.listeLivres FROM Abonne p where p.mail=:Nom";
+	public List<Don> rechercherDonParUtilisateur(Utilisateur u){
+		String strA= "select p.dons FROM Abonne p where p.mail=:Nom";
 		Query qDon = em.createQuery(strA);
 		qDon.setParameter("Nom",u.getMail());
 		List<Don> result= (List<Don>)qDon.getResultList();
@@ -101,8 +93,15 @@ public class DAOLocalBean implements Serializable {
 		em.persist(a);
 	}
 	
-	public void modifierUtilisateur(Utilisateur u1,Utilisateur u2)
-	{
+	public void ajouterDon(Don d) {
+		em.persist(d);
+	}
+	
+	public void ajouterNouvelle(Nouvelle n) {
+		em.persist(n);
+	}
+	
+	public void modifierUtilisateur(Utilisateur u1,Utilisateur u2){
 		if(u2 == null) {return;}
 		if(isExistingMail(u2.getMail())) {return ;}
 		Utilisateur uu1 = rechercheListeUtilisateur(u1);
@@ -112,13 +111,18 @@ public class DAOLocalBean implements Serializable {
 		
 	}
 	
-	public void supprimerUtilisateur(Utilisateur p)
-	{
+	public void supprimerNouvelle(Nouvelle n){
+		String str="Delete FROM Nouvelle p WHERE p.id=:id";
+		Query qSuppNouv = em.createQuery(str);
+		qSuppNouv.setParameter("Nom",n.getId());
+		qSuppNouv.executeUpdate();
+	}
+	
+	public void supprimerUtilisateur(Utilisateur p){
 		String str="Delete FROM Utilisateur p WHERE p.mail=:Nom";
 		Query qSupp = em.createQuery(str);
 		qSupp.setParameter("Nom",p.getMail());
 		qSupp.executeUpdate();
-
 	}
 	
 	
@@ -130,9 +134,16 @@ public class DAOLocalBean implements Serializable {
 
 		return result;
 	}
+	
+	public List<Utilisateur> afficherListeDon(){
+		String str="select u from Utilisateur u";
+		Query qUser = em.createQuery(str);
+		List<Utilisateur> result= (List<Utilisateur>)qUser.getResultList();
+
+		return result;
+	}
 		
 	public List<Administrateur> afficherListeAdministrateur(){
-
 		String str="select u from Abonne u";
 		Query qAdmin = em.createQuery(str);
 		List<Administrateur> result= (List<Administrateur>)qAdmin.getResultList();
