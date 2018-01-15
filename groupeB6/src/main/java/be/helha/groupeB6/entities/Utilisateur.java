@@ -28,8 +28,8 @@ public class Utilisateur implements Serializable{
 	@OneToOne(cascade=CascadeType.ALL)//DANGER => ALL
 	private Adresse domicile;
 	
-/*	@OneToMany(cascade=CascadeType.ALL)
-	private Set<Livre> livres= new HashSet<Livre>();*/
+	@OneToMany(cascade=CascadeType.ALL)
+	private Set<Don> dons= new HashSet<Don>();
 	
 
 	public Utilisateur(int numero, int numTel, String nom, String prenom, String mail, String mdp, String nationalite, Date dateNaissance) {
@@ -130,12 +130,24 @@ public class Utilisateur implements Serializable{
 		this.domicile = domicile;
 	}
 
+	
+	public Set<Don> getDons() {
+		return dons;
+	}
+
+	public void setDons(Set<Don> dons) {
+		this.dons = dons;
+	}
+
 	@Override
 	public String toString() {
 		return "Utilisateur [id=" + id + ", numero=" + numero + ", numTel=" + numTel + ", nom=" + nom + ", prenom="
 				+ prenom + ", mail=" + mail + ", mdp=" + mdp + ", nationalite=" + nationalite + ", dateNaissance=" + dateNaissance + "]";
 	}
 	
-	
+	public void addDon(Don don) {
+		dons.add(don);
+	}
+
 	
 }
