@@ -35,23 +35,6 @@ public class GestionUtilisateurEJB implements IGestionUtilisateurEJBRemote {
 		return null;
 	}
 
-	@Override
-	public Evenement ajouterEvenement(Evenement e) {
-		dao.ajouterEvenement(e);
-		return null;
-	}
-
-	@Override
-	public Evenement supprimerEvenement(Evenement e) {
-		dao.afficherListeEvenement();
-		return null;
-	}
-
-	@Override
-	public List<Utilisateur> afficherEvenenement() {
-		return dao.afficherListeEvenement();
-	}
-
 
 
 }

@@ -4,7 +4,7 @@
 	version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
 	
 	
-	<persistence-unit name="dbb6" transaction-type="JTA">
+	<persistence-unit name="groupeb6JTA" transaction-type="JTA">
 		
 		<jta-data-source>jdbc/groupeB6</jta-data-source> 
 		<class>be.helha.groupeB6.entities.Utilisateur</class>
@@ -16,11 +16,11 @@
 				
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 
-	</persistence-unit>
+	</persistence-unit> 
 	
 	
 	
-	 	<!-- <persistence-unit name="dbb6" transaction-type="RESOURCE_LOCAL">
+	 	 <persistence-unit name="dbb6" transaction-type="RESOURCE_LOCAL">
 		 
 		<class>be.helha.groupeB6.entities.Utilisateur</class>
 		<class>be.helha.groupeB6.entities.Administrateur</class>
@@ -39,6 +39,7 @@
 			<property name="javax.persistence.jdbc.password" value="3649"/> 
 
 		</properties>
-	</persistence-unit>-->
+	</persistence-unit>
 	
 </persistence>
+

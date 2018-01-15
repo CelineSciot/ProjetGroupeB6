@@ -7,7 +7,7 @@ import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import be.helha.groupeB6.entities.Evenement;
-import be.helha.groupeB6.entities.Utilisateur;
+import be.helha.groupeB6.sessionejb.GestionEvenementEJB;
 import be.helha.groupeB6.sessionejb.GestionUtilisateurEJB;
 
 @Named
@@ -19,14 +19,14 @@ public class EvenementController {
 	private String titre,description,typeCollecte, image;
 	
 	@EJB
-	private GestionUtilisateurEJB gestionUtilisateur;
+	private GestionEvenementEJB gestionEvenement;
 	
-	public List<Utilisateur> doUtil(){
-		return gestionUtilisateur.afficherEvenenement();
+	public List<Evenement> doUtil(){
+		return gestionEvenement.afficherEvenenement();
 	}
 	
 	public void AjouterEvenement(Evenement e) {
-		gestionUtilisateur.ajouterEvenement(e);
+		gestionEvenement.ajouterEvenement(e);
 		this.dateA=null;
 		this.titre="";
 		this.description="";
@@ -35,7 +35,7 @@ public class EvenementController {
 	}
 	
 	public void SupprimerEvenement(Evenement e) {
-		gestionUtilisateur.supprimerEvenement(e);
+		gestionEvenement.supprimerEvenement(e);
 	}
 
 	public Evenement getEvenement() {
@@ -86,12 +86,12 @@ public class EvenementController {
 		this.image = image;
 	}
 
-	public GestionUtilisateurEJB getGestionUtilisateur() {
-		return gestionUtilisateur;
+	public GestionEvenementEJB getGestionUtilisateur() {
+		return gestionEvenement;
 	}
 
-	public void setGestionUtilisateur(GestionUtilisateurEJB gestionUtilisateur) {
-		this.gestionUtilisateur = gestionUtilisateur;
+	public void setGestionUtilisateur(GestionEvenementEJB gestionEvenement) {
+		this.gestionEvenement = gestionEvenement;
 	}
 	
 	

@@ -9,7 +9,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import com.sun.corba.ee.impl.javax.rmi.CORBA.Util;
 
 import be.helha.groupeB6.entities.Administrateur;
 import be.helha.groupeB6.entities.Adresse;
@@ -23,7 +22,7 @@ import be.helha.groupeB6.entities.Nouvelle;
 @LocalBean
 public class DAOLocalBean implements Serializable {
 	
-	@PersistenceContext(unitName="dbb6")
+	@PersistenceContext(unitName="groupeb6JTA")
 	private EntityManager em;
 
 	
@@ -156,10 +155,10 @@ public class DAOLocalBean implements Serializable {
 		return result;
 	}
 	
-	public List<Utilisateur> afficherListeEvenement(){
-		String str="select u from Utilisateur u";
+	public List<Evenement> afficherListeEvenement(){
+		String str="select evenements from Utilisateur u";
 		Query qUser = em.createQuery(str);
-		List<Utilisateur> result= (List<Utilisateur>)qUser.getResultList();
+		List<Evenement> result= (List<Evenement>)qUser.getResultList();
 
 		return result;
 	}

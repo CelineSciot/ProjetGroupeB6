@@ -8,27 +8,39 @@ xmlns:jsf="http://xmlns.jcp.org/jsf">
 		<link rel="stylesheet" href="FichierCSS.css" />
 	</h:head>
 <body>
-		<!--  Bienvenue #{utilisateurControl.nomU}
 		
+
 		<h:form>
-			<h:dataTable value = "#{utilisateurControl.doAfficherListeUser()}" var = "user"		
+			<h:dataTable value = "#{evenementControl.doAfficherEvenements()}" var = "evt"		
 			   			headerClass = "UserTableHeader"
 			   			rowClasses = "UserTableOddRow,UserTableEvenRow">
 			 
 			  <h:column>    				
-			      <f:facet name = "header">Id</f:facet>    				
-			      <h:commandLink value="#{user.id}"  action="#{utilisateurControl.doDetails(user)}"></h:commandLink>
+			      <f:facet name = "header">date</f:facet>    				
+			     #{evt.dateA}
 			   </h:column>  
 	
 			   
 			   <h:column>    				
-			      <f:facet name = "header">Login</f:facet>    				
-			      <h:commandLink value="#{user.login}"  action="#{utilisateurControl.doDetails(user)}"></h:commandLink>
+			      <f:facet name = "header">titre</f:facet>    				
+			     #{evt.titre}
 			   </h:column>
 			   
+			    <h:column>    				
+			      <f:facet name = "header">Description</f:facet>    				
+			     #{evt.description}
+			   </h:column>
+			    <h:column>    				
+			      <f:facet name = "header">Type de collecte</f:facet>    				
+			     #{evt.typeCollecte}
+			   </h:column>
 			   <h:column>
-			      <f:facet name = "header">Password</f:facet>
-			      #{user.password}
+			      <f:facet name = "header">Image</f:facet>
+			      #{evt.image}
+			   </h:column>
+			   <h:column>
+			      <f:facet name = "header">objectifFinancier</f:facet>
+			      #{evt.objectifFinancier}
 			   </h:column>
 	
 				<h:column>
@@ -37,8 +49,7 @@ xmlns:jsf="http://xmlns.jcp.org/jsf">
 	  			
 			</h:dataTable>
 	
-		</h:form>-->
-
+		</h:form>
 
 </body>
 </html>

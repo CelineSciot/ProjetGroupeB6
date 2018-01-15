@@ -24,6 +24,11 @@ public class UtilisateurConstrol {
 	@EJB
 	private GestionUtilisateurEJB gestionUtilisateur;
 	
+	public String doNext() {
+		
+		return "ListeEvenements.xhtml?faces-redirect=true";
+	}
+	
 	public List<Utilisateur> doUtil(){
 		return gestionUtilisateur.SelectionnerUtilisateur();
 	}
