@@ -156,7 +156,7 @@ public class DAOLocalBean implements Serializable {
 	}
 	
 	public List<Evenement> afficherListeEvenement(){
-		String str="select evenements from Utilisateur u";
+		String str="select e from Evenement e";
 		Query qUser = em.createQuery(str);
 		List<Evenement> result= (List<Evenement>)qUser.getResultList();
 

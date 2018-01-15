@@ -11,7 +11,7 @@ xmlns:jsf="http://xmlns.jcp.org/jsf">
 		
 
 		<h:form>
-			<h:dataTable value = "#{evenementControl.doAfficherEvenements()}" var = "evt"		
+			<h:dataTable value = "#{evenementController.doUtil()}" var = "evt"		
 			   			headerClass = "UserTableHeader"
 			   			rowClasses = "UserTableOddRow,UserTableEvenRow">
 			 
@@ -43,10 +43,6 @@ xmlns:jsf="http://xmlns.jcp.org/jsf">
 			      #{evt.objectifFinancier}
 			   </h:column>
 	
-				<h:column>
-			      <h:commandButton class="delete" value="X"  action="#{utilisateurControl.doDeleteUser(user)}"></h:commandButton>
-			   </h:column>
-	  			
 			</h:dataTable>
 	
 		</h:form>
