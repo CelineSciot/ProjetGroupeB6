@@ -4,14 +4,15 @@
 	version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
 	
 	
-	<!-- HELLO -->
-	<persistence-unit name="sciotJTA" transaction-type="JTA">
+	<persistence-unit name="GROUPEB6JTA" transaction-type="JTA">
 		
 		<jta-data-source>jdbc/bbbb</jta-data-source> 
-		<class>be.helha.sciot.entities.Utilisateur</class>
-		<class>be.helha.sciot.entities.Abonne</class>
-		<class>be.helha.sciot.entities.Adresse</class>
-		<class>be.helha.sciot.entities.Livre</class>
+		<class>be.helha.groupeB6.entities.Utilisateur</class>
+		<class>be.helha.groupeB6.entities.Administrateur</class>
+		<class>be.helha.groupeB6.entities.Don</class>
+		<class>be.helha.groupeB6.entities.Adresse</class>
+		<class>be.helha.groupeB6.entities.Action</class>
+		<class>be.helha.groupeB6.entities.Nouvelle</class>
 				
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 
