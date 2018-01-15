@@ -8,12 +8,97 @@ xmlns:jsf="http://xmlns.jcp.org/jsf">
 		<link rel="stylesheet" href="FichierCSS.css" />
 	</h:head>
 	<h:body>
-		 HELLO WORLD
+	   <!-- 	 
+		 
+		 <h:form>  
+
+	    <h:menubar>
+	        <h:submenu label="File" icon="ui-icon-document">
+	            <h:submenu label="New" icon="ui-icon-contact">
+	                <h:menuitem value="Project" url="#" />
+	                <h:menuitem value="Other" url="#" />
+	            </h:submenu>
+	            <h:menuitem value="Open" url="#" />
+	            <h:separator />
+	            <h:menuitem value="Quit" url="#" />
+	        </h:submenu>
+	 
+	        <h:submenu label="Edit" icon="ui-icon-pencil">
+	            <h:menuitem value="Undo" url="#" icon="ui-icon-arrowreturnthick-1-w" />
+	            <h:menuitem value="Redo" url="#" icon="ui-icon-arrowreturnthick-1-e" />
+	        </h:submenu>
+	 
+	        <h:submenu label="Help" icon="ui-icon-help">
+	            <h:menuitem value="Contents" url="#" />
+	            <h:submenu label="Search" icon="ui-icon-search">
+	                <h:submenu label="Text">
+	                    <h:menuitem value="Workspace" url="#" />
+	                </h:submenu>
+	                <h:menuitem value="File" url="#" />
+	            </h:submenu>
+	        </h:submenu>
+	 
+	        <h:submenu label="Actions" icon="ui-icon-gear">
+	            <h:submenu label="Ajax" icon="ui-icon-refresh">
+	                <h:menuitem value="Save" actionListener="#{menuView.save}" icon="ui-icon-disk" update="messages"/>
+	                <h:menuitem value="Update" actionListener="#{menuView.update}" icon="ui-icon-arrowrefresh-1-w" update="messages"/>
+	            </h:submenu>
+	            <h:submenu label="Non-Ajax" icon="ui-icon-newwin">
+	                <h:menuitem value="Delete" actionListener="#{menuView.delete}" icon="ui-icon-close" update="messages" ajax="false"/>
+	            </h:submenu>
+	        </h:submenu>
+	 
+	        <h:menuitem value="Quit" url="http://www.primefaces.org" icon="ui-icon-close" />
+	 
+	        <f:facet name="options">
+	            <h:inputText style="margin-right:10px" placeholder="Search"/>
+	            <h:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
+	        </f:facet>
+	    </h:menubar>
+</h:form>
+		  -->
+		 
+		 
 		  <h:form>
 		 
 		 	
 		 	<h:commandButton class="button" value="Liste" action="#{utilisateurConstrol.doNext()}"></h:commandButton>
 		 </h:form>
+		 
+		 
+		<h1>S'incrire</h1>
+		
+		<h:form>
+			<h:panelGrid columns="2" class="table">
+				
+			    <h:outputText value="Nom:" />
+			    <h:inputText value = "#{utilisateurControl.nom}"/>
+			 
+			    <h:outputText value="Prenom:" />
+			    <h:inputText value = "#{utilisateurControl.prenom}"/>
+			 
+			    <h:outputText value="mail:" />
+			    <h:inputText value = "#{utilisateurControl.mail}"/>
+			 
+			    <h:outputText value="Téléphone:" />
+			    <h:inputText value = "#{utilisateurControl.numTel}"/>
+			    
+			    <h:outputText value="mot de passe:" />
+			    <h:inputText value = "#{utilisateurControl.mdp}"/>
+			    
+			    <h:outputText value="nationalité:" />
+			    <h:inputText value = "#{utilisateurControl.nationalite}"/>
+			    
+			    <h:outputText value="dateNaissance:" />
+			    <h:inputText value = "#{utilisateurControl.dateNaissance}"/>
+
+			 
+			    
+	   			 <h:commandButton class="button" value = "S'inscrire" ></h:commandButton>
+			</h:panelGrid>
+		</h:form>
+		 	
+	
 		 
 		 
 		</h:body>

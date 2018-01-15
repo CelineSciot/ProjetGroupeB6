@@ -15,7 +15,33 @@ xmlns:jsf="http://xmlns.jcp.org/jsf">
 			   			headerClass = "UserTableHeader"
 			   			rowClasses = "UserTableOddRow,UserTableEvenRow">
 			 
-			  <h:column>    				
+			 <h:column>
+			 
+			 
+			
+			
+			<h:panelGrid columns="1">
+			    <h1><h:outputText value="#{evt.titre}" /></h1>
+			    
+			    <f:facet name="header">
+			        <h:graphicImage name="demo/images/misc/kobe.png" />
+			    </f:facet>
+
+			    <h:outputText value="#{evt.description}"/>
+			 
+			    <h:outputText value="#{evt.typeCollecte}" />
+			    <h:outputText value="#{evt.objectifFinancier}" />
+
+			</h:panelGrid>
+			
+			 
+			  <!--
+			 	<f:facet name="header">Image
+			        
+			    </f:facet>
+			    <h:graphicImage name="demo/images/misc/kobe.png" />
+			 </h:column>
+			  	<h:column>    				
 			      <f:facet name = "header">date</f:facet>    				
 			     #{evt.dateA}
 			   </h:column>  
@@ -37,15 +63,21 @@ xmlns:jsf="http://xmlns.jcp.org/jsf">
 			   <h:column>
 			      <f:facet name = "header">Image</f:facet>
 			      #{evt.image}
-			   </h:column>
+			   </h:column> 
 			   <h:column>
 			      <f:facet name = "header">objectifFinancier</f:facet>
-			      #{evt.objectifFinancier}
+			      #{evt.objectifFinancier}-->
 			   </h:column>
 	
 			</h:dataTable>
+			
+			
+			
 	
 		</h:form>
+		
+		
+		
 
 </body>
 </html>
