@@ -3,6 +3,9 @@ package be.helha.groupeB6.entities;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Administrateur extends Utilisateur implements Serializable{
 
 	public Administrateur() {
