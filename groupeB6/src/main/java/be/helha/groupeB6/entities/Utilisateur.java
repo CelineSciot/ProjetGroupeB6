@@ -31,6 +31,8 @@ public class Utilisateur implements Serializable{
 	@OneToMany(cascade=CascadeType.ALL)
 	private Set<Don> dons= new HashSet<Don>();
 	
+	@OneToMany(cascade=CascadeType.ALL)
+	private Set<Evenement> evenements = new HashSet<Evenement>();
 
 	public Utilisateur(int numero, int numTel, String nom, String prenom, String mail, String mdp, String nationalite, Date dateNaissance) {
 		super();
@@ -138,6 +140,16 @@ public class Utilisateur implements Serializable{
 	public void setDons(Set<Don> dons) {
 		this.dons = dons;
 	}
+	
+	
+
+	public Set<Evenement> getEvenements() {
+		return evenements;
+	}
+
+	public void setEvenements(Set<Evenement> evenements) {
+		this.evenements = evenements;
+	}
 
 	@Override
 	public String toString() {
@@ -149,5 +161,7 @@ public class Utilisateur implements Serializable{
 		dons.add(don);
 	}
 
-	
+	public void addEvenement(Evenement evenement) {
+		evenements.add(evenement);
+	}
 }

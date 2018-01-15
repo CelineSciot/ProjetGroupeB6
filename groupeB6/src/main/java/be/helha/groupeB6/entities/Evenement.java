@@ -9,18 +9,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Action implements Serializable{
+public class Evenement implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	
 	
 	private Date dateA;
 	private String titre,description,typeCollecte, image;
 	
 	private double objectifFinancier;
 
-	public Action(Date dateA, String titre, String description, String typeCollecte, String image,
+	public Evenement(Date dateA, String titre, String description, String typeCollecte, String image,
 			double objectifFinancier) {
 		super();
 		this.dateA = dateA;
@@ -31,7 +32,7 @@ public class Action implements Serializable{
 		this.objectifFinancier = objectifFinancier;
 	}
 	
-	public Action() {}
+	public Evenement() {}
 
 	public Date getDateA() {
 		return dateA;

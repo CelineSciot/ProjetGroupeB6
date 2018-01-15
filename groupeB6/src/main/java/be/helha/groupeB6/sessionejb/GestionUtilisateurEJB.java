@@ -7,6 +7,7 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
 import be.helha.groupeB6.dao.DAOLocalBean;
+import be.helha.groupeB6.entities.Evenement;
 import be.helha.groupeB6.entities.Utilisateur;
 
 @Stateless
@@ -32,6 +33,23 @@ public class GestionUtilisateurEJB implements IGestionUtilisateurEJBRemote {
 	public Utilisateur supprimerUtilisateur(Utilisateur u) {
 		dao.supprimerUtilisateur(u);
 		return null;
+	}
+
+	@Override
+	public Evenement ajouterEvenement(Evenement e) {
+		dao.ajouterEvenement(e);
+		return null;
+	}
+
+	@Override
+	public Evenement supprimerEvenement(Evenement e) {
+		dao.afficherListeEvenement();
+		return null;
+	}
+
+	@Override
+	public List<Utilisateur> afficherEvenenement() {
+		return dao.afficherListeEvenement();
 	}
 
 

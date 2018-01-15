@@ -15,6 +15,7 @@ import be.helha.groupeB6.entities.Administrateur;
 import be.helha.groupeB6.entities.Adresse;
 import be.helha.groupeB6.entities.Utilisateur;
 import be.helha.groupeB6.entities.Don;
+import be.helha.groupeB6.entities.Evenement;
 import be.helha.groupeB6.entities.Nouvelle;
 
 @SuppressWarnings("unchecked")
@@ -65,6 +66,14 @@ public class DAOLocalBean implements Serializable {
 		return result;
 	}
 	
+	public List<Evenement> rechercheEvenementParUtilisateur(Utilisateur u){
+		String strA= "select p.evenement FROM Utilusateur p where p.mail=:Nom";
+		Query qEvenement = em.createQuery(strA);
+		qEvenement.setParameter("Nom",u.getMail());
+		List<Evenement> result= (List<Evenement>)qEvenement.getResultList();
+		return result;
+	}
+	
 	public Utilisateur rechercheListeUtilisateur(Utilisateur u) {
 		List<Utilisateur> liste= afficherListeUtilisateur();
 		for(int i=0;i< liste.size();i++) {
@@ -95,6 +104,10 @@ public class DAOLocalBean implements Serializable {
 	
 	public void ajouterDon(Don d) {
 		em.persist(d);
+	}
+	
+	public void ajouterEvenement(Evenement evenement) {
+		em.persist(evenement);
 	}
 	
 	public void ajouterNouvelle(Nouvelle n) {
@@ -136,6 +149,14 @@ public class DAOLocalBean implements Serializable {
 	}
 	
 	public List<Utilisateur> afficherListeDon(){
+		String str="select u from Utilisateur u";
+		Query qUser = em.createQuery(str);
+		List<Utilisateur> result= (List<Utilisateur>)qUser.getResultList();
+
+		return result;
+	}
+	
+	public List<Utilisateur> afficherListeEvenement(){
 		String str="select u from Utilisateur u";
 		Query qUser = em.createQuery(str);
 		List<Utilisateur> result= (List<Utilisateur>)qUser.getResultList();
