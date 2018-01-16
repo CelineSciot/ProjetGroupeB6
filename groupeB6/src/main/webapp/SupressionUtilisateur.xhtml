@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:jsf="http://xmlns.jcp.org/jsf">
+	<h:head>
+		<title>Supprimer Utilisateur</title>
+		<link rel="stylesheet" href="FichierCSS.css" />
+	</h:head>
+<body>
+		
+
+		<h:form>
+			<h:dataTable value = "#{utilisateurControl.doUtil()}" var = "u"		
+			   			headerClass = "UserTableHeader"
+			   			rowClasses = "UserTableOddRow,UserTableEvenRow">
+			 
+
+			  	<h:column>    				
+			      <f:facet name = "header">Nom</f:facet>    				
+			     #{u.nom}
+			    </h:column> 
+			    
+			    <h:column>    				
+			      <f:facet name = "header">Prenom</f:facet>    				
+			     #{u.prenom}
+			    </h:column> 
+			    
+			    <h:column>    				
+			      <f:facet name = "header">Email</f:facet>    				
+			     #{u.mail}
+			    </h:column> 
+			    
+			    <h:column>    				
+			      <f:facet name = "header">GSM</f:facet>    				
+			     #{u.numTel}
+			    </h:column> 
+			    
+			    <h:column>    				
+			      <f:facet name = "header">Nationalité</f:facet>    				
+			     #{u.nationalite}
+			    </h:column>  
+			    
+			    <h:column>    				
+			      <f:facet name = "header">Date de naissance</f:facet>    				
+			     #{u.dateNaissance}
+			    </h:column>  
+	
+	
+	
+			   <h:column>
+			      <h:commandButton class="delete" value="X"  action="#{utilisateurControl.supprimerUtilisateur(u)}"></h:commandButton>
+			   </h:column>
+			   
+			</h:dataTable>
+			
+			
+			
+	
+		</h:form>
+		
+		
+		
+
+</body>
+</html>
