@@ -2,65 +2,67 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 xmlns:f="http://java.sun.com/jsf/core"
 xmlns:h="http://java.sun.com/jsf/html"
-xmlns:p="http://primefaces.org/ui"
 xmlns:jsf="http://xmlns.jcp.org/jsf">
-	<head>
+	<h:head>
 		<title>index</title>
-		
-	</head>
+		<link rel="stylesheet" href="FichierCSS.css" />
+	</h:head>
 	<h:body>
-
+	   <!-- 	 
+		 
 		 <h:form>  
-    <p:growl id="messages"/>
-    <p:menubar>
-        <p:submenu label="File" icon="ui-icon-document">
-            <p:submenu label="New" icon="ui-icon-contact">
-                <p:menuitem value="Project" url="#" />
-                <p:menuitem value="Other" url="#" />
-            </p:submenu>
-            <p:menuitem value="Open" url="#" />
-            <p:separator />
-            <p:menuitem value="Quit" url="#" />
-        </p:submenu>
- 
-        <p:submenu label="Edit" icon="ui-icon-pencil">
-            <p:menuitem value="Undo" url="#" icon="ui-icon-arrowreturnthick-1-w" />
-            <p:menuitem value="Redo" url="#" icon="ui-icon-arrowreturnthick-1-e" />
-        </p:submenu>
- 
-        <p:submenu label="Help" icon="ui-icon-help">
-            <p:menuitem value="Contents" url="#" />
-            <p:submenu label="Search" icon="ui-icon-search">
-                <p:submenu label="Text">
-                    <p:menuitem value="Workspace" url="#" />
-                </p:submenu>
-                <p:menuitem value="File" url="#" />
-            </p:submenu>
-        </p:submenu>
- 
-        <p:submenu label="Actions" icon="ui-icon-gear">
-            <p:submenu label="Ajax" icon="ui-icon-refresh">
-                <p:menuitem value="Save" actionListener="" icon="ui-icon-disk" update="messages"/>
-                <p:menuitem value="Update" actionListener="" icon="ui-icon-arrowrefresh-1-w" update="messages"/>
-            </p:submenu>
-            <p:submenu label="Non-Ajax" icon="ui-icon-newwin">
-                <p:menuitem value="Delete" actionListener="" icon="ui-icon-close" update="messages" ajax="false"/>
-            </p:submenu>
-        </p:submenu>
- 
-        <p:menuitem value="Quit" url="http://www.primefaces.org" icon="ui-icon-close" />
- 
-        <f:facet name="options">
-            <p:inputText style="margin-right:10px" placeholder="Search"/>
-            <p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
-        </f:facet>
-    </p:menubar>
+
+	    <h:menubar>
+	        <h:submenu label="File" icon="ui-icon-document">
+	            <h:submenu label="New" icon="ui-icon-contact">
+	                <h:menuitem value="Project" url="#" />
+	                <h:menuitem value="Other" url="#" />
+	            </h:submenu>
+	            <h:menuitem value="Open" url="#" />
+	            <h:separator />
+	            <h:menuitem value="Quit" url="#" />
+	        </h:submenu>
+	 
+	        <h:submenu label="Edit" icon="ui-icon-pencil">
+	            <h:menuitem value="Undo" url="#" icon="ui-icon-arrowreturnthick-1-w" />
+	            <h:menuitem value="Redo" url="#" icon="ui-icon-arrowreturnthick-1-e" />
+	        </h:submenu>
+	 
+	        <h:submenu label="Help" icon="ui-icon-help">
+	            <h:menuitem value="Contents" url="#" />
+	            <h:submenu label="Search" icon="ui-icon-search">
+	                <h:submenu label="Text">
+	                    <h:menuitem value="Workspace" url="#" />
+	                </h:submenu>
+	                <h:menuitem value="File" url="#" />
+	            </h:submenu>
+	        </h:submenu>
+	 
+	        <h:submenu label="Actions" icon="ui-icon-gear">
+	            <h:submenu label="Ajax" icon="ui-icon-refresh">
+	                <h:menuitem value="Save" actionListener="#{menuView.save}" icon="ui-icon-disk" update="messages"/>
+	                <h:menuitem value="Update" actionListener="#{menuView.update}" icon="ui-icon-arrowrefresh-1-w" update="messages"/>
+	            </h:submenu>
+	            <h:submenu label="Non-Ajax" icon="ui-icon-newwin">
+	                <h:menuitem value="Delete" actionListener="#{menuView.delete}" icon="ui-icon-close" update="messages" ajax="false"/>
+	            </h:submenu>
+	        </h:submenu>
+	 
+	        <h:menuitem value="Quit" url="http://www.primefaces.org" icon="ui-icon-close" />
+	 
+	        <f:facet name="options">
+	            <h:inputText style="margin-right:10px" placeholder="Search"/>
+	            <h:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
+	        </f:facet>
+	    </h:menubar>
 </h:form>
+		  -->
+		 
 		 
 		  <h:form>
 		 
-		 	<h:commandButton class="button" value="Liste Evenement" action="#{utilisateurConstrol.doNext()}"></h:commandButton>
-		 	<h:commandButton class="button" value="Ajouter un Evenement" action="#{utilisateurConstrol.doAjoutEvent()}"></h:commandButton>
+		 	
+		 	<h:commandButton class="button" value="Liste" action="#{utilisateurConstrol.doNext()}"></h:commandButton>
 		 </h:form>
 		 
 		 
@@ -94,7 +96,9 @@ xmlns:jsf="http://xmlns.jcp.org/jsf">
 			    
 	   			 <h:commandButton class="button" value = "S'inscrire" ></h:commandButton>
 			</h:panelGrid>
-		</h:form>	
+		</h:form>
+		 	
+	
 		 
 		 
 		</h:body>
