@@ -177,6 +177,15 @@ public class DAOLocalBean implements Serializable {
 
 		return result;
 	}
+	
+	public List<Evenement> afficherEvenementViaApprobation(boolean approuve){
+		String str="select e from Evenement where e.approuve= :Approuve";
+		Query qUser = em.createQuery(str);
+		qUser.setParameter("Approuve",approuve);
+		List<Evenement> result= (List<Evenement>)qUser.getResultList();
+
+		return result;
+	}
 		
 	//AUTRES
 	private boolean isExistingMail(String mail) {
