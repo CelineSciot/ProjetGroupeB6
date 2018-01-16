@@ -2,68 +2,34 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 xmlns:f="http://java.sun.com/jsf/core"
 xmlns:h="http://java.sun.com/jsf/html"
-xmlns:jsf="http://xmlns.jcp.org/jsf">
+xmlns:jsf="http://xmlns.jcp.org/jsf"
+xmlns:b="http://bootsfaces.net/ui">
 	<h:head>
 		<title>index</title>
-		<link rel="stylesheet" href="FichierCSS.css" />
 	</h:head>
 	<h:body>
-	   <!-- 	 
-		 
-		 <h:form>  
 
-	    <h:menubar>
-	        <h:submenu label="File" icon="ui-icon-document">
-	            <h:submenu label="New" icon="ui-icon-contact">
-	                <h:menuitem value="Project" url="#" />
-	                <h:menuitem value="Other" url="#" />
-	            </h:submenu>
-	            <h:menuitem value="Open" url="#" />
-	            <h:separator />
-	            <h:menuitem value="Quit" url="#" />
-	        </h:submenu>
-	 
-	        <h:submenu label="Edit" icon="ui-icon-pencil">
-	            <h:menuitem value="Undo" url="#" icon="ui-icon-arrowreturnthick-1-w" />
-	            <h:menuitem value="Redo" url="#" icon="ui-icon-arrowreturnthick-1-e" />
-	        </h:submenu>
-	 
-	        <h:submenu label="Help" icon="ui-icon-help">
-	            <h:menuitem value="Contents" url="#" />
-	            <h:submenu label="Search" icon="ui-icon-search">
-	                <h:submenu label="Text">
-	                    <h:menuitem value="Workspace" url="#" />
-	                </h:submenu>
-	                <h:menuitem value="File" url="#" />
-	            </h:submenu>
-	        </h:submenu>
-	 
-	        <h:submenu label="Actions" icon="ui-icon-gear">
-	            <h:submenu label="Ajax" icon="ui-icon-refresh">
-	                <h:menuitem value="Save" actionListener="#{menuView.save}" icon="ui-icon-disk" update="messages"/>
-	                <h:menuitem value="Update" actionListener="#{menuView.update}" icon="ui-icon-arrowrefresh-1-w" update="messages"/>
-	            </h:submenu>
-	            <h:submenu label="Non-Ajax" icon="ui-icon-newwin">
-	                <h:menuitem value="Delete" actionListener="#{menuView.delete}" icon="ui-icon-close" update="messages" ajax="false"/>
-	            </h:submenu>
-	        </h:submenu>
-	 
-	        <h:menuitem value="Quit" url="http://www.primefaces.org" icon="ui-icon-close" />
-	 
-	        <f:facet name="options">
-	            <h:inputText style="margin-right:10px" placeholder="Search"/>
-	            <h:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
-	        </f:facet>
-	    </h:menubar>
-</h:form>
-		  -->
-		 
+		 <h:form>
+			<b:navBar brand="MSF" brandHref="#" fluid="true">
+			  <b:navbarLinks>
+			    <b:navLink value="Faire un don" href="Don.xhtml"></b:navLink>
+			    <b:dropMenu value="Actions">
+			      <b:navLink value="Voir les evenements en cours" href="#{utilisateurControl.doNext()}"></b:navLink>
+			      <b:navLink value="Créer un événement" href="#{utilisateurControl.doAjoutEvent()}"></b:navLink>
+			    </b:dropMenu>
+			    <b:navLink value="Nouvelles" href="#"></b:navLink>
+			    <b:navLink value="A propos" href="#"></b:navLink>
+			    <b:navLink value="Contact" href="#"></b:navLink>
+			  </b:navbarLinks>
+			  <!-- Following line is needed for TBS 3.0.1 (panel content overflow issue) -->
+			  <b:navbarLinks pull="right"><b:navLink value="    " href="#"></b:navLink></b:navbarLinks>
+			  <b:navbarLinks pull="right" styleClass="hidden-xs">
+			    <b:navLink value="Connexion" href="#"></b:navLink>
+			  </b:navbarLinks>
+			</b:navBar>
+		 </h:form>
 		 
 		  <h:form>
-		 
-		 	
-		 	<h:commandButton class="button" value="Liste" action="#{utilisateurControl.doNext()}"></h:commandButton>
-		 	<h:commandButton class="button" value="Ajouter Evenement" action="#{utilisateurControl.doAjoutEvent()}"></h:commandButton>
 		 	<h:commandButton value = "Supprimer Evenement" action="#{evenementControl.doSupression()}" ></h:commandButton>
 		 </h:form>
 		 

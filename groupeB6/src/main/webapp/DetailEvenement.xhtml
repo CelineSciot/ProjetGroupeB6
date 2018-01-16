@@ -2,12 +2,34 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 xmlns:f="http://java.sun.com/jsf/core"
 xmlns:h="http://java.sun.com/jsf/html"
-xmlns:jsf="http://xmlns.jcp.org/jsf">
+xmlns:jsf="http://xmlns.jcp.org/jsf"
+xmlns:b="http://bootsfaces.net/ui">
 	<h:head>
 		<title>Détails evenements</title>
 		<link rel="stylesheet" href="FichierCSS.css" />
 	</h:head>
 <body>
+
+
+		 <h:form>
+			<b:navBar brand="MSF" brandHref="#" fluid="true">
+			  <b:navbarLinks>
+			    <b:navLink value="Faire un don" href="Don.xhtml"></b:navLink>
+			    <b:dropMenu value="Actions">
+			      <b:navLink value="Voir les evenements en cours" href="#{utilisateurControl.doNext()}"></b:navLink>
+			      <b:navLink value="Créer un événement" href="#{utilisateurControl.doAjoutEvent()}"></b:navLink>
+			    </b:dropMenu>
+			    <b:navLink value="Nouvelles" href="#"></b:navLink>
+			    <b:navLink value="A propos" href="#"></b:navLink>
+			    <b:navLink value="Contact" href="#"></b:navLink>
+			  </b:navbarLinks>
+			  <!-- Following line is needed for TBS 3.0.1 (panel content overflow issue) -->
+			  <b:navbarLinks pull="right"><b:navLink value="    " href="#"></b:navLink></b:navbarLinks>
+			  <b:navbarLinks pull="right" styleClass="hidden-xs">
+			    <b:navLink value="Connexion" href="#"></b:navLink>
+			  </b:navbarLinks>
+			</b:navBar>
+		 </h:form>
 		
 
 		<h:form>
