@@ -29,6 +29,11 @@ public class UtilisateurConstrol {
 		return "ListeEvenements.xhtml?faces-redirect=true";
 	}
 	
+	public String doAjoutEvent() {
+		
+		return "ActionAjout.xhtml?faces-redirect=true";
+	}
+	
 	public List<Utilisateur> doUtil(){
 		return gestionUtilisateur.SelectionnerUtilisateur();
 	}

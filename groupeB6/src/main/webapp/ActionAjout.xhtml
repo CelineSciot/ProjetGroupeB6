@@ -1,10 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:jsf="http://xmlns.jcp.org/jsf"
+xmlns:p="http://primefaces.org/ui">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+<title>Creer un nouvel événement</title>
 
-</body>
+</head>
+
+<h:body>
+
+		<h1>Créer un nouvel événement</h1>
+		
+		<h:form>
+			<h:panelGrid columns="2" class="table">
+				
+			    <h:outputText value="Saississez un titre pour votre événements:" />
+			    <h:inputText value = "#{evenementControl.titre}"/>
+			 
+			    <h:outputText value="Saississez une date pour votre événements:" />
+			    <h:inputText value = "#{evenementControl.dateA}"/>
+			 
+			    <h:outputText value="Saississez le type pour votre événements:"/>
+			    <h:inputText value = "#{evenementControl.typeCollecte}"/>
+			    
+			    <h:outputText value="Saississez l'object financier pour votre événements:" />
+			    <p:spinner id="prefix" value="#{evenementControl.objetifFinancier}" prefix="€" min="0" />
+			    
+			    
+			     <h:outputText value="Choisissez une image pour votre événements:" />
+			   <!--  <h:form enctype="multipart/form-data" action="#" method="post"> -->
+			         <input type="hidden" name="MAX_FILE_SIZE" value="250000" />
+			         <input type="file" name="fic" />
+			        
+      			<!--</h:form>-->
+      			<h:outputText value="Saississez la description pour votre événements:"/>
+			    <h:inputText value = "#{evenementControl.description}"/>
+      			
+			    
+	   			 <h:commandButton class="button" value = "Proposer l'événement" ></h:commandButton>
+			</h:panelGrid>
+		</h:form>
+		
+		
+
+</h:body>
 </html>
