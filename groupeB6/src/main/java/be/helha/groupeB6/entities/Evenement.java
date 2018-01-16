@@ -1,6 +1,7 @@
 package be.helha.groupeB6.entities;
 
 import java.io.Serializable;
+import java.util.Base64;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -93,8 +94,9 @@ public class Evenement implements Serializable{
 		this.approuve = approuve;
 	}
 
-	public byte[] getImages() {
-		return images;
+	public String getImages() {
+		//byte [] tmp = Base64.getEncoder().encode(images);
+		return new String (images);
 	}
 
 	public void setImages(byte[] images) {
