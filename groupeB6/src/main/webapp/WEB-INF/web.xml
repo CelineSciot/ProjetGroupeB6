@@ -5,7 +5,10 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/
 id="WebApp_ID" 
 version="3.1">
   <display-name>should be changed</display-name>
- 
+ <context-param>
+        <param-name>BootsFaces_USETHEME</param-name>
+        <param-value>true</param-value>
+    </context-param>
  	<!-- Si je tape le nom de mon appli on affiche un des fichiers la -->
   	<welcome-file-list>
 		<welcome-file>index.xhtml</welcome-file>
