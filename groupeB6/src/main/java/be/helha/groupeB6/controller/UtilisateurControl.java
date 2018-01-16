@@ -19,10 +19,14 @@ import be.helha.groupeB6.sessionejb.GestionUtilisateurEJB;
 public class UtilisateurControl {
 	
 	private Utilisateur utilisateur = new Utilisateur();
+	private List<Utilisateur> listeUsers;
+	private Utilisateur utilisateurConnecte;
+	
 	private String numTel;
 	private String nom,prenom,mail;
 	private String mdp,nationalite;
 	private	String  dateNaissance;
+	private String messageErreur;
 	
 	@EJB
 	private GestionUtilisateurEJB gestionUtilisateur;
@@ -67,7 +71,21 @@ public class UtilisateurControl {
 	}
 	
 
-	
+	public void seConnecter() {
+		listeUsers = gestionUtilisateur.SelectionnerUtilisateur();
+		
+		for(Utilisateur u : listeUsers) {
+			if(u.getMail().equals(mail) && u.getMdp().equals(mdp)) {
+				utilisateurConnecte= u;
+				messageErreur="Connection établie";
+				return;
+			}
+			
+		}
+
+		messageErreur= "Mot de passe ou login incorrect";
+		
+	}
 
 	public String getNumTel() {
 		return numTel;
@@ -123,6 +141,30 @@ public class UtilisateurControl {
 
 	public void setDateNaissance(String dateNaissance) {
 		this.dateNaissance = dateNaissance;
+	}
+
+	public String getMessageErreur() {
+		return messageErreur;
+	}
+
+	public void setMessageErreur(String messageErreur) {
+		this.messageErreur = messageErreur;
+	}
+
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
+	}
+
+	public Utilisateur getUtilisateurConnecte() {
+		return utilisateurConnecte;
+	}
+
+	public void setUtilisateurConnecte(Utilisateur utilisateurConnecte) {
+		this.utilisateurConnecte = utilisateurConnecte;
 	}
 
 

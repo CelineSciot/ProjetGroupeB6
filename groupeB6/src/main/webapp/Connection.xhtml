@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:jsf="http://xmlns.jcp.org/jsf">
+	<h:head>
+		<title>Détails evenements</title>
+		<link rel="stylesheet" href="FichierCSS.css" />
+	</h:head>
+<body>
+		#{utilisateurControl.messageErreur}
+		<h:panelGrid>
+			<h:panelGroup>
+		    	<h:form>
+			    	<h:panelGrid columns="2">
+						<h:panelGroup>Login :</h:panelGroup>
+						<h:panelGroup><h:inputText value = "#{utilisateurControl.mail}"/></h:panelGroup>
+
+						
+						<h:panelGroup>Mot de passe :</h:panelGroup>
+						<h:panelGroup><h:inputSecret value = "#{utilisateurControl.mdp}"/></h:panelGroup>
+						
+					</h:panelGrid>	
+				
+			 		<h:commandButton  class="button" value="Connection" action="#{utilisateurControl.seConnecter()}"></h:commandButton>
+	
+			   </h:form>
+		    </h:panelGroup>
+
+		    
+		</h:panelGrid>
+</body>
+</html>
