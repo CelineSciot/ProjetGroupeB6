@@ -25,5 +25,41 @@ xmlns:b="http://bootsfaces.net/ui">
 			  </b:navbarLinks>
 			</b:navBar>
 		 </h:form>
+		 <h1>Faire un Don</h1>
+		 <h:form>
+			<h:panelGrid columns="2" class="table">
+				
+			    <h:outputText value="Montant:" />
+			    <h:inputText value = "#{donControl.montant}"/>
+			 
+			 
+			    
+	   			 <h:commandButton value = "Faire la donnation" action="#{donControl.ajouterDon()}" ></h:commandButton>
+			</h:panelGrid>
+	  		
+	  	</h:form>
+		 
+		 <h:form>
+			<h:dataTable value = "#{donControl.doDon()}" var = "evt"		
+			   			headerClass = "UserTableHeader"
+			   			rowClasses = "UserTableOddRow,UserTableEvenRow" style="width:100%;">
+			   			<h:column>
+			   			
+			   			<div class="panel-group" style="width:80%;text-align:center;margin-left:10%;">
+			    			<div class="panel panel-default">
+			      				<div class="panel-heading"><h:commandLink value="#{evt.montant}"></h:commandLink></div>
+			      				<div class="panel-body">
+			     
+			      				</div>
+			    			</div>
+			    		</div>
+			    </h:column>
+			 </h:dataTable>
+	  		
+	  	</h:form>
+		 
+		 
+		 
+		 
 </h:body>
 </html>

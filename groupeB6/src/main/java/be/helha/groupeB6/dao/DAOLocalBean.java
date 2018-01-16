@@ -114,13 +114,12 @@ public class DAOLocalBean implements Serializable {
 		em.persist(n);
 	}
 	
-	public void modifierUtilisateur(Utilisateur u1,Utilisateur u2){
-		if(u2 == null) {return;}
-		if(isExistingMail(u2.getMail())) {return ;}
+	public void modifierUtilisateur(Utilisateur u1){
+		
 		Utilisateur uu1 = rechercheListeUtilisateur(u1);
 		if(uu1 == null) {return;}
 		Utilisateur u=em.merge(uu1);
-		u.setMail(u2.getMail());
+		u.setDons(u1.getDons());
 		
 	}
 	
@@ -154,11 +153,10 @@ public class DAOLocalBean implements Serializable {
 		return result;
 	}
 	
-	public List<Utilisateur> afficherListeDon(){
-		String str="select u from Utilisateur u";
-		Query qUser = em.createQuery(str);
-		List<Utilisateur> result= (List<Utilisateur>)qUser.getResultList();
-
+	public List<Don> afficherListeDon(){
+		String str="SELECT d FROM Don";
+		Query qDon = em.createQuery(str);
+		List<Don> result= (List<Don>)qDon.getResultList();
 		return result;
 	}
 	

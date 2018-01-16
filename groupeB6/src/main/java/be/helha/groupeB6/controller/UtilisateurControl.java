@@ -20,7 +20,7 @@ public class UtilisateurControl {
 	
 	private Utilisateur utilisateur = new Utilisateur();
 	private List<Utilisateur> listeUsers;
-	private static Utilisateur utilisateurConnecte;
+	public static Utilisateur utilisateurConnecte;
 	
 	private String numTel;
 	private String nom,prenom,mail;
