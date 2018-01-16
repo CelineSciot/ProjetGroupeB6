@@ -29,20 +29,32 @@ xmlns:b="http://bootsfaces.net/ui">
 
 
 		#{utilisateurControl.messageErreur}
+		
 		<h:panelGrid>
 			<h:panelGroup>
 		    	<h:form>
 			    	<h:panelGrid columns="2">
 						<h:panelGroup>Login :</h:panelGroup>
-						<h:panelGroup><h:inputText value = "#{utilisateurControl.mail}"/></h:panelGroup>
+						<h:panelGroup>
+						<div class="input-group">
+						<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+						<h:inputText class="form-control" name="email" placeholder="Email" value = "#{utilisateurControl.mail}"/>
+						</div>
+						</h:panelGroup>
+						
 
 						
 						<h:panelGroup>Mot de passe :</h:panelGroup>
-						<h:panelGroup><h:inputSecret value = "#{utilisateurControl.mdp}"/></h:panelGroup>
+						<h:panelGroup>
+						<div class="input-group">
+						<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+						<h:inputSecret class="form-control" name="password" placeholder="Password" value = "#{utilisateurControl.mdp}"/>
+						</div>
+						</h:panelGroup>
 						
 					</h:panelGrid>	
 				
-			 		<h:commandButton  class="button" value="Connection" action="#{utilisateurControl.seConnecter()}"></h:commandButton>
+			 		<h:commandButton value="Connection" class="form-control" action="#{utilisateurControl.seConnecter()}"></h:commandButton>
 	
 			   </h:form>
 		    </h:panelGroup>
