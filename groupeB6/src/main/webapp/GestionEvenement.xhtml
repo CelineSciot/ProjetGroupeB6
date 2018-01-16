@@ -43,7 +43,7 @@ xmlns:b="http://bootsfaces.net/ui">
 			    <div class="panel panel-default">
 			      <div class="panel-heading"><h:commandLink value="#{evt.titre}"  action="#{evenementControl.doDetails(evt)}"></h:commandLink></div>
 			      <div class="panel-body">
-			      <h:graphicImage name="demo/images/misc/kobe.png" /><br />
+			      <img src="data:image/jpg;base64,#{evt.images}" width="380"></img><br/>
 			      Date de l'évènement : #{evt.dateA}
 			      </div>
 			    </div>

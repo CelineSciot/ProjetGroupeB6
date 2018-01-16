@@ -44,7 +44,7 @@ xmlns:b="http://bootsfaces.net/ui">
 			    <h1><h:outputText value="#{evt.titre}" /></h1>
 			    
 			    <f:facet name="header">
-			        <h:graphicImage name="demo/images/misc/kobe.png" />
+			        <img src="data:image/jpg;base64,#{evt.images}" width="380"></img>
 			    </f:facet>
 
 			    <h:outputText value="#{evt.description}"/>
