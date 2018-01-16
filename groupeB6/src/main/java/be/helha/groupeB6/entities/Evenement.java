@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 
 @Entity
 public class Evenement implements Serializable{
@@ -17,21 +18,28 @@ public class Evenement implements Serializable{
 	
 	
 	private Date dateA;
-	private String titre,description,typeCollecte, image;
+	private String titre,description,typeCollecte;
 	
 	private double objectifFinancier;
+	private boolean approuve;
+	
+	@Lob
+	private byte[] images;
 
-	public Evenement(Date dateA, String titre, String description, String typeCollecte, String image,
-			double objectifFinancier) {
+
+	
+	public Evenement(Date dateA, String titre, String description, String typeCollecte,
+			double objectifFinancier, boolean approuve, byte[] images) {
 		super();
 		this.dateA = dateA;
 		this.titre = titre;
 		this.description = description;
 		this.typeCollecte = typeCollecte;
-		this.image = image;
 		this.objectifFinancier = objectifFinancier;
+		this.approuve = approuve;
+		this.images = images;
 	}
-	
+
 	public Evenement() {}
 
 	public Date getDateA() {
@@ -66,13 +74,7 @@ public class Evenement implements Serializable{
 		this.typeCollecte = typeCollecte;
 	}
 
-	public String getImage() {
-		return image;
-	}
 
-	public void setImage(String image) {
-		this.image = image;
-	}
 
 	public double getObjectifFinancier() {
 		return objectifFinancier;
@@ -82,13 +84,23 @@ public class Evenement implements Serializable{
 		this.objectifFinancier = objectifFinancier;
 	}
 
-
-	@Override
-	public String toString() {
-		return "Action [id=" + id + ", dateA=" + dateA + ", titre=" + titre + ", description=" + description
-				+ ", typeCollecte=" + typeCollecte + ", image=" + image + ", objectifFinancier=" + objectifFinancier
-				+ "]";
+	public boolean isApprouve() {
+		return approuve;
 	}
+
+	public void setApprouve(boolean approuve) {
+		this.approuve = approuve;
+	}
+
+	public byte[] getImages() {
+		return images;
+	}
+
+	public void setImages(byte[] images) {
+		this.images = images;
+	}
+
+	
 	
 	
 	
