@@ -39,4 +39,9 @@ public class GestionEvenementEJB implements IGestionEvenementEJBRemote{
 		return dao.rechercheEvenement(e);
 	}
 
+	@Override
+	public List<Evenement> afficherEvenementViaApprobation(boolean approuve) {
+		return dao.afficherEvenementViaApprobation(approuve);
+	}
+
 }

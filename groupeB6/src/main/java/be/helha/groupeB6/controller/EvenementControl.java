@@ -63,6 +63,10 @@ public class EvenementControl {
 	public void SupprimerEvenement(Evenement e) {
 		gestionEvenement.supprimerEvenement(e);
 	}
+	
+	public void afficherEvenementViaApprobation() {
+		gestionEvenement.afficherEvenementViaApprobation(true);
+	}
 
 	public Evenement getEvenement() {
 		return evenement;

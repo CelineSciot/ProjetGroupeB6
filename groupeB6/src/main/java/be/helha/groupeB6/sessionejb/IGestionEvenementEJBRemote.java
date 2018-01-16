@@ -14,4 +14,5 @@ public interface IGestionEvenementEJBRemote {
 	List<Evenement> afficherEvenenement();
 	
 	Evenement selectEvenement(Evenement e);
+	List<Evenement>afficherEvenementViaApprobation(boolean approuve);
 }
