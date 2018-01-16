@@ -64,8 +64,9 @@ public class EvenementControl {
 		gestionEvenement.supprimerEvenement(e);
 	}
 	
-	public void afficherEvenementViaApprobation() {
-		gestionEvenement.afficherEvenementViaApprobation(true);
+	public void afficherEvenementViaApprobation(boolean approuve,Evenement e) {
+		gestionEvenement.afficherEvenementViaApprobation(approuve);
+		gestionEvenement.modifierEvenement(e);
 	}
 
 	public Evenement getEvenement() {

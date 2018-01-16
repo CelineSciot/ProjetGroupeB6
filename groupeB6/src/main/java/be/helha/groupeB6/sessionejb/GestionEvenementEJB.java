@@ -44,4 +44,10 @@ public class GestionEvenementEJB implements IGestionEvenementEJBRemote{
 		return dao.afficherEvenementViaApprobation(approuve);
 	}
 
+	@Override
+	public Evenement modifierEvenement(Evenement e) {
+		dao.modifierEvenement(e);
+		return null;
+	}
+
 }
