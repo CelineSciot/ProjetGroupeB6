@@ -16,7 +16,7 @@ public class MainData {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Utilisateur user= new Utilisateur("user", "user", "user", "0498/012334", "helha", "Belge", null);
+	/*	Utilisateur user= new Utilisateur("user", "user", "user", "0498/012334", "helha", "Belge", null);
 		Administrateur admin= new Administrateur("admin", "admin","admin", "0495/015015", "helha", "Belge", null );
 		
 		Adresse adresse1 = new Adresse("R1", "N1", 1000, "V1");
@@ -53,7 +53,7 @@ public class MainData {
 		tx.commit();
 		em.clear();
 		em.close();
-		emf.close();
+		emf.close();*/
 		
 	}
 

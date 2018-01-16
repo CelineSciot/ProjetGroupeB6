@@ -49,14 +49,7 @@ public class DAOLocalBean implements Serializable {
 		return result.get(0);
 	}
 	
-	public Utilisateur rechercherUtilisateurAdresse(Utilisateur u) {
-		String strA= "SELECT p FROM Utilisateur p inner join Adresse a on p.adresse = a.id WHERE a.rue=:Rue";
-		Query qAdr = em.createQuery(strA);
-		qAdr.setParameter("Rue", u.getDomicile().getRue());
-		List<Utilisateur> result= (List<Utilisateur>)qAdr.getResultList();
-		return result.get(0);
-	}
-	
+
 	public List<Don> rechercherDonParUtilisateur(Utilisateur u){
 		String strA= "select p.dons FROM Abonne p where p.mail=:Nom";
 		Query qDon = em.createQuery(strA);
@@ -81,6 +74,14 @@ public class DAOLocalBean implements Serializable {
 			}
 		}
 		return null;
+	}
+	
+	public Evenement rechercheEvenement(Evenement e) {
+		String str= "SELECT p FROM Evenement p WHERE p.titre=:Nom";
+		Query qNom = em.createQuery(str);
+		qNom.setParameter("Nom", e.getTitre());
+		List<Evenement> result= (List<Evenement>)qNom.getResultList();
+		return result.get(0);
 	}
 	
 	
@@ -137,6 +138,12 @@ public class DAOLocalBean implements Serializable {
 		qSupp.executeUpdate();
 	}
 	
+	public void supprimerEvenement(Evenement e){
+		String str="Delete FROM Evenement p WHERE p.titre=:Nom";
+		Query qSupp = em.createQuery(str);
+		qSupp.setParameter("Nom",e.getTitre());
+		qSupp.executeUpdate();
+	}
 	
 	//AFFICHER LISTE
 	public List<Utilisateur> afficherListeUtilisateur(){

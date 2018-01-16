@@ -17,16 +17,26 @@ public class EvenementController {
 	private Evenement evenement = new Evenement();
 	private Date dateA;
 	private String titre,description,typeCollecte, image;
+	private double objectifFinancier;
+	private boolean approuve;
 	
 	@EJB
 	private GestionEvenementEJB gestionEvenement;
+	
+	public String doDetails(Evenement e)
+	{
+		evenement= gestionEvenement.selectEvenement(e);
+		System.out.println(evenement);	
+		return"DetailEvenement.xhtml";
+	}
 	
 	public List<Evenement> doUtil(){
 		return gestionEvenement.afficherEvenenement();
 	}
 	
 	public void AjouterEvenement(Evenement e) {
-		gestionEvenement.ajouterEvenement(e);
+		evenement = new Evenement(this.dateA,this.titre,this.description,this.typeCollecte,this.image,this.objectifFinancier) ;
+		gestionEvenement.ajouterEvenement(evenement);
 		this.dateA=null;
 		this.titre="";
 		this.description="";

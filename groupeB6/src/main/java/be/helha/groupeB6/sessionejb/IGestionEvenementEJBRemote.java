@@ -12,4 +12,6 @@ public interface IGestionEvenementEJBRemote {
 	Evenement ajouterEvenement(Evenement e);
 	Evenement supprimerEvenement(Evenement e);
 	List<Evenement> afficherEvenenement();
+	
+	Evenement selectEvenement(Evenement e);
 }

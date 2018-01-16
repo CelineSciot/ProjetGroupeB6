@@ -16,7 +16,7 @@ import be.helha.groupeB6.sessionejb.GestionUtilisateurEJB;
 public class UtilisateurConstrol {
 	
 	private Utilisateur utilisateur = new Utilisateur();
-	private int numero, numTel;
+	private String numTel;
 	private String nom,prenom,mail;
 	private String mdp,nationalite;
 	private Date dateNaissance;
@@ -38,36 +38,32 @@ public class UtilisateurConstrol {
 		return gestionUtilisateur.SelectionnerUtilisateur();
 	}
 	
-	public void AjouterUtilisateur(Utilisateur u) {
-		gestionUtilisateur.ajouterUtilisateur(u);
-		this.numero=0;
-		this.numTel=0;
-		this.nom="";
-		this.prenom="";
-		this.mail="";
-		this.mdp="";
-		this.nationalite="";
-		this.dateNaissance= null;	
-	}
+	public void AjouterUtilisateur() {
+			
+			utilisateur = new Utilisateur(this.nom, this.prenom, this.mail, this.numTel, this.mdp, this.nationalite, this.dateNaissance);
+			gestionUtilisateur.ajouterUtilisateur(utilisateur);
+			System.out.println(this.nom);
+			this.numTel="";
+			this.nom="";
+			this.prenom="";
+			this.mail="";
+			this.mdp="";
+			this.nationalite="";
+			this.dateNaissance= null;	
+		}
 	
 	public void SupprimerUtilisateur(Utilisateur u) {
 		gestionUtilisateur.supprimerUtilisateur(u);
 	}
 	
 
-	public int getNumero() {
-		return numero;
-	}
+	
 
-	public void setNumero(int numero) {
-		this.numero = numero;
-	}
-
-	public int getNumTel() {
+	public String getNumTel() {
 		return numTel;
 	}
 
-	public void setNumTel(int numTel) {
+	public void setNumTel(String numTel) {
 		this.numTel = numTel;
 	}
 

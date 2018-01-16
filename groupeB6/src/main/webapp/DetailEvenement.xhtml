@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:jsf="http://xmlns.jcp.org/jsf">
+	<h:head>
+		<title>Détails evenements</title>
+		<link rel="stylesheet" href="FichierCSS.css" />
+	</h:head>
+<body>
+		
+
+		<h:form>
+			<h:dataTable value = "#{evenementController.getEvenement()}" var = "evt"		
+			   			headerClass = "UserTableHeader"
+			   			rowClasses = "UserTableOddRow,UserTableEvenRow">
+			 
+			 <h:column>
+			 
+			 
+			
+			
+			<h:panelGrid columns="1">
+			    <h1><h:outputText value="#{evt.titre}" /></h1>
+			    
+			    <f:facet name="header">
+			        <h:graphicImage name="demo/images/misc/kobe.png" />
+			    </f:facet>
+
+			    <h:outputText value="#{evt.description}"/>
+			 
+			    <h:outputText value="#{evt.typeCollecte}" />
+			    <h:outputText value="#{evt.objectifFinancier}" />
+
+			</h:panelGrid>
+		</h:column>
+		</h:dataTable>
+		</h:form>
+			
+</body>
+</html>

@@ -25,13 +25,18 @@ public class GestionEvenementEJB implements IGestionEvenementEJBRemote{
 
 	@Override
 	public Evenement supprimerEvenement(Evenement e) {
-		dao.afficherListeEvenement();
+		dao.supprimerEvenement(e);
 		return null;
 	}
 
 	@Override
 	public List<Evenement> afficherEvenenement() {
 		return dao.afficherListeEvenement();
+	}
+
+	@Override
+	public Evenement selectEvenement(Evenement e) {
+		return dao.rechercheEvenement(e);
 	}
 
 }

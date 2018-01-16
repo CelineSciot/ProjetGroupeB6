@@ -4,7 +4,7 @@ xmlns:f="http://java.sun.com/jsf/core"
 xmlns:h="http://java.sun.com/jsf/html"
 xmlns:jsf="http://xmlns.jcp.org/jsf">
 	<h:head>
-		<title>Liste évènements</title>
+		<title>Supprimer Evenement</title>
 		<link rel="stylesheet" href="FichierCSS.css" />
 	</h:head>
 <body>
@@ -32,6 +32,11 @@ xmlns:jsf="http://xmlns.jcp.org/jsf">
 			      <h:commandLink value="#{evt.titre}"  action="#{evenementController.doDetails(evt)}"></h:commandLink>
 			   </h:column> 
 	
+	
+			<h:column>
+			      <h:commandButton class="delete" value="X"  action="#{evenementController.SupprimerEvenement(evt)}"></h:commandButton>
+			   </h:column>
+			   
 			</h:dataTable>
 			
 			
