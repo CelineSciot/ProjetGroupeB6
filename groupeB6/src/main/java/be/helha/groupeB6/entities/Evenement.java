@@ -15,7 +15,7 @@ public class Evenement implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	
+	private int idUtilisateur;
 	
 	private Date dateA;
 	private String titre,description,typeCollecte;
@@ -29,7 +29,7 @@ public class Evenement implements Serializable{
 
 	
 	public Evenement(Date dateA, String titre, String description, String typeCollecte,
-			double objectifFinancier, boolean approuve, byte[] images) {
+			double objectifFinancier, boolean approuve, byte[] images,int idUtilisateur) {
 		super();
 		this.dateA = dateA;
 		this.titre = titre;
@@ -38,6 +38,7 @@ public class Evenement implements Serializable{
 		this.objectifFinancier = objectifFinancier;
 		this.approuve = approuve;
 		this.images = images;
+		this.idUtilisateur=idUtilisateur;
 	}
 
 	public Evenement() {}
