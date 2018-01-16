@@ -35,6 +35,9 @@ public class EvenementControl {
 	public List<Evenement> doUtil(){
 		return gestionEvenement.afficherEvenenement();
 	}
+	public String doSupression(){
+		return"SupressionEvenement.xhtml";
+	}
 	
 	public void AjouterEvenement(Evenement e) {
 		Date dateE=null;
