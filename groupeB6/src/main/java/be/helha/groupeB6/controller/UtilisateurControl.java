@@ -1,5 +1,8 @@
 package be.helha.groupeB6.controller;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -13,13 +16,13 @@ import be.helha.groupeB6.sessionejb.GestionUtilisateurEJB;
 
 @Named
 @RequestScoped
-public class UtilisateurConstrol {
+public class UtilisateurControl {
 	
 	private Utilisateur utilisateur = new Utilisateur();
 	private String numTel;
 	private String nom,prenom,mail;
 	private String mdp,nationalite;
-	private Date dateNaissance;
+	private	String  dateNaissance;
 	
 	@EJB
 	private GestionUtilisateurEJB gestionUtilisateur;
@@ -38,10 +41,17 @@ public class UtilisateurConstrol {
 		return gestionUtilisateur.SelectionnerUtilisateur();
 	}
 	
-	public void AjouterUtilisateur() {
-			
-			utilisateur = new Utilisateur(this.nom, this.prenom, this.mail, this.numTel, this.mdp, this.nationalite, this.dateNaissance);
-			gestionUtilisateur.ajouterUtilisateur(utilisateur);
+	public void ajouterUtilisateur() {
+			Date dateE=null;
+			SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+			try {
+				dateE=df.parse(this.dateNaissance);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			utilisateur = new Utilisateur(this.nom, this.prenom, this.mail, this.numTel, this.mdp, this.nationalite,dateE);
+			gestionUtilisateur.ajouterUtilisateur(utilisateur);	
 			System.out.println(this.nom);
 			this.numTel="";
 			this.nom="";
@@ -52,7 +62,7 @@ public class UtilisateurConstrol {
 			this.dateNaissance= null;	
 		}
 	
-	public void SupprimerUtilisateur(Utilisateur u) {
+	public void supprimerUtilisateur(Utilisateur u) {
 		gestionUtilisateur.supprimerUtilisateur(u);
 	}
 	
@@ -107,13 +117,15 @@ public class UtilisateurConstrol {
 		this.nationalite = nationalite;
 	}
 
-	public Date getDateNaissance() {
+	public String getDateNaissance() {
 		return dateNaissance;
 	}
 
-	public void setDateNaissance(Date dateNaissance) {
+	public void setDateNaissance(String dateNaissance) {
 		this.dateNaissance = dateNaissance;
 	}
+
+
 	
 	
 

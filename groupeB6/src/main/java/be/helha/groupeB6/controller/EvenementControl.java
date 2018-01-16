@@ -12,7 +12,7 @@ import be.helha.groupeB6.sessionejb.GestionUtilisateurEJB;
 
 @Named
 @RequestScoped
-public class EvenementController {
+public class EvenementControl {
 	
 	private Evenement evenement = new Evenement();
 	private Date dateA;
@@ -102,6 +102,14 @@ public class EvenementController {
 
 	public void setGestionUtilisateur(GestionEvenementEJB gestionEvenement) {
 		this.gestionEvenement = gestionEvenement;
+	}
+
+	public double getObjectifFinancier() {
+		return objectifFinancier;
+	}
+
+	public void setObjectifFinancier(double objectifFinancier) {
+		this.objectifFinancier = objectifFinancier;
 	}
 	
 	

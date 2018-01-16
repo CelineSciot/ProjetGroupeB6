@@ -62,7 +62,8 @@ xmlns:jsf="http://xmlns.jcp.org/jsf">
 		  <h:form>
 		 
 		 	
-		 	<h:commandButton class="button" value="Liste" action="#{utilisateurConstrol.doNext()}"></h:commandButton>
+		 	<h:commandButton class="button" value="Liste" action="#{utilisateurControl.doNext()}"></h:commandButton>
+		 	<h:commandButton class="button" value="Liste" action="#{utilisateurControl.doAjoutEvent()}"></h:commandButton>
 		 </h:form>
 		 
 		 
@@ -94,7 +95,7 @@ xmlns:jsf="http://xmlns.jcp.org/jsf">
 
 			 
 			    
-	   			 <h:commandButton class="button" value = "S'inscrire" ></h:commandButton>
+	   			 <h:commandButton value = "S'inscrire" action="#{utilisateurControl.ajouterUtilisateur()}" ></h:commandButton>
 			</h:panelGrid>
 		</h:form>
 		 	

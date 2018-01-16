@@ -11,7 +11,7 @@ xmlns:jsf="http://xmlns.jcp.org/jsf">
 		
 
 		<h:form>
-			<h:dataTable value = "#{evenementController.doUtil()}" var = "evt"		
+			<h:dataTable value = "#{evenementControl.doUtil()}" var = "evt"		
 			   			headerClass = "UserTableHeader"
 			   			rowClasses = "UserTableOddRow,UserTableEvenRow">
 			 
@@ -29,12 +29,12 @@ xmlns:jsf="http://xmlns.jcp.org/jsf">
 			   <h:column>    				
 			      <f:facet name = "header">titre</f:facet>    				
 			    
-			      <h:commandLink value="#{evt.titre}"  action="#{evenementController.doDetails(evt)}"></h:commandLink>
+			      <h:commandLink value="#{evt.titre}"  action="#{evenementControl.doDetails(evt)}"></h:commandLink>
 			   </h:column> 
 	
 	
 			<h:column>
-			      <h:commandButton class="delete" value="X"  action="#{evenementController.SupprimerEvenement(evt)}"></h:commandButton>
+			      <h:commandButton class="delete" value="X"  action="#{evenementControl.SupprimerEvenement(evt)}"></h:commandButton>
 			   </h:column>
 			   
 			</h:dataTable>

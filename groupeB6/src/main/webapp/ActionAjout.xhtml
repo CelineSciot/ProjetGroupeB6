@@ -17,16 +17,16 @@ xmlns:p="http://primefaces.org/ui">
 			<h:panelGrid columns="2" class="table">
 				
 			    <h:outputText value="Saississez un titre pour votre événements:" />
-			    <h:inputText value = "#{evenementController.titre}"/>
+			    <h:inputText value = "#{evenementControl.titre}"/>
 			 
 			    <h:outputText value="Saississez une date pour votre événements:" />
-			    <h:inputText value = "#{evenementController.dateA}"/>
+			    <h:inputText value = "#{evenementControl.dateA}"/>
 			 
 			    <h:outputText value="Saississez le type pour votre événements:"/>
-			    <h:inputText value = "#{evenementController.typeCollecte}"/>
+			    <h:inputText value = "#{evenementControl.typeCollecte}"/>
 			    
 			    <h:outputText value="Saississez l'object financier pour votre événements:" />
-			    <p:spinner id="prefix" value="#{evenementController.objetifFinancier}" prefix="€" min="0" />
+			    <p:spinner id="prefix" value="#{evenementControl.objectifFinancier}" prefix="€" min="0" />
 			    
 			    
 			     <h:outputText value="Choisissez une image pour votre événements:" />
@@ -36,7 +36,7 @@ xmlns:p="http://primefaces.org/ui">
 			        
       			<!--</h:form>-->
       			<h:outputText value="Saississez la description pour votre événements:"/>
-			    <h:inputText value = "#{evenementController.description}"/>
+			    <h:inputText value = "#{evenementControl.description}"/>
       			
 			    
 	   			 <h:commandButton class="button" value = "Proposer l'événement" ></h:commandButton>
