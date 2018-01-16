@@ -184,6 +184,15 @@ public class DAOLocalBean implements Serializable {
 
 		return result;
 	}
+	
+	public void modifierEvenement(Evenement e){
+		Evenement evt = rechercheEvenement(e);
+		if(evt == null) {return;}
+		Evenement ee=em.merge(evt);
+	
+		ee.setApprouve(e.isApprouve());
+		
+	}
 		
 	//AUTRES
 	private boolean isExistingMail(String mail) {

@@ -31,7 +31,7 @@ xmlns:p="http://primefaces.org/ui">
 			    
 			     <h:outputText value="Choisissez une image pour votre événements:" />
 			   <!--  <h:form enctype="multipart/form-data" action="#" method="post"> -->
-			         <input type="hidden" name="MAX_FILE_SIZE" value="250000" />
+			         <input type="hidden" name="MAX_FILE_SIZE" value="#{evenementControl.image}" />
 			         <input type="file" name="fic" />
 			        
       			<!--</h:form>-->

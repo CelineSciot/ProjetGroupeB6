@@ -29,6 +29,11 @@ xmlns:b="http://bootsfaces.net/ui">
 		 </h:form>
 
 		<h:form>
+		<h:commandButton  class="button" value="Afficher tout" action="#{EvenementControl.seConnecter()}"></h:commandButton>
+		<h:commandButton  class="button" value="Afficher les évènements en traitement" action="#{EvenementControl.seConnecter()}"></h:commandButton>
+		<h:commandButton  class="button" value="Afficher les évènements approuvés" action="#{EvenementControl.seConnecter()}"></h:commandButton>
+		</h:form>
+		<h:form>
 			<h:dataTable value = "#{evenementControl.doUtil()}" var = "evt"		
 			   			headerClass = "UserTableHeader"
 			   			rowClasses = "UserTableOddRow,UserTableEvenRow" style="width:100%;">
@@ -38,12 +43,13 @@ xmlns:b="http://bootsfaces.net/ui">
 			    <div class="panel panel-default">
 			      <div class="panel-heading"><h:commandLink value="#{evt.titre}"  action="#{evenementControl.doDetails(evt)}"></h:commandLink></div>
 			      <div class="panel-body">
-			     <img src="data:image/jpg;base64,#{evt.images}" width="380"></img><br/>
+			      <h:graphicImage name="demo/images/misc/kobe.png" /><br />
 			      Date de l'évènement : #{evt.dateA}
 			      </div>
 			    </div>
 			    </div>
 			    </h:column>
+			    <h:commandButton  class="button" value="Approuvé" action="#{EvenementControl.seConnecter()}"></h:commandButton>
 			 </h:dataTable>
 	  		
 	  	</h:form>
