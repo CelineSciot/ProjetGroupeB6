@@ -95,8 +95,8 @@ public class Evenement implements Serializable{
 	}
 
 	public String getImages() {
-		//byte [] tmp = Base64.getEncoder().encode(images);
-		return new String (images);
+		byte [] tmp = Base64.getEncoder().encode(images);
+		return new String (tmp);
 	}
 
 	public void setImages(byte[] images) {

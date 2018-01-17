@@ -13,7 +13,7 @@ xmlns:p="http://primefaces.org/ui">
  
 		<h1>Créer un nouvel événement</h1>
 		
-		<h:form>
+		<h:form enctype="multipart/form-data">
 			<h:panelGrid columns="2" class="table">
 				
 			    <h:outputText value="Saississez un titre pour votre événements:" />
@@ -30,11 +30,9 @@ xmlns:p="http://primefaces.org/ui">
 			    <h:inputText id="prefix" value="#{evenementControl.objectifFinancier}" prefix="€" min="0" />
 			    
 			     <h:outputText value="Choisissez une image pour votre événements:" />
-			   <!--  <h:form enctype="multipart/form-data" action="#" method="post"> -->
-			         <input type="hidden" name="MAX_FILE_SIZE" value="#{evenementControl.image}" />
-			         <input type="file" name="fic" />
-			        
-      			<!--</h:form>-->
+			    
+			        <h:inputFile id="file" value="#{evenementControl.up.uploadedFile}"/>
+			      
       			<h:outputText value="Saississez la description pour votre événements:"/>
 			    <h:inputText value = "#{evenementControl.description}"/>
       			
