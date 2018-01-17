@@ -33,6 +33,8 @@ public class DonControl {
 	@EJB
 	private GestionUtilisateurEJB gestionUser;
 	
+
+	
 	public void doDon()
 	{
 		dons = UtilisateurControl.utilisateurConnecte.getDons();
@@ -78,6 +80,17 @@ public class DonControl {
 	public void setDons(Set<Don> dons) {
 		this.dons = dons;
 	}
+	
+	
+
+
+
+
+
+
+	
+	
+	
 	
 
 	

@@ -52,7 +52,7 @@ public String doCreerCompte() {
 	
 	public void ajouterUtilisateur() {
 			Date dateE=null;
-			SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+			SimpleDateFormat df = new SimpleDateFormat("dd/MM/YY");
 			try {
 				dateE=df.parse(this.dateNaissance);
 			} catch (ParseException e) {
