@@ -43,6 +43,7 @@ xmlns:b="http://bootsfaces.net/ui">
 		        <b:datepicker label="Date de l'événement" value = "#{evenementControl.dateA}"  mode="toggle-icon"/>
 		        <b:inputText value = "#{evenementControl.typeCollecte}" label="Collectif/individuel"/>
 		        <b:touchSpin id="spin1"  value="#{evenementControl.objectifFinancier}" label="Objectif" min="10" max="10000" step="100" prefix="€" />
+		        <b:inputText value = "#{evenementControl.lieu}" label="Lieu"/>
 		        <h:inputFile id="file" value="#{evenementControl.up.uploadedFile}" label="Image de l'événement"/>
 		      </b:panel>
 		    </b:carouselItem>

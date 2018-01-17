@@ -20,6 +20,10 @@ xmlns:b="http://bootsfaces.net/ui">
 			    <b:navLink value="Nouvelles" href="#"></b:navLink>
 			    <b:navLink value="A propos" href="About.xhtml"></b:navLink>
 			    <b:navLink value="Contact" href="Contact.xhtml"></b:navLink>
+			    <b:dropMenu value="Gestion Evenement">
+			      <b:navLink value="gérer évenement" href="#{evenementControl.doGestion()}"></b:navLink>
+			      <b:navLink value="Supprimer des évènements" href="#{evenementControl.doSupression()}"></b:navLink>
+			    </b:dropMenu>
 			  </b:navbarLinks>
 			  <b:navbarLinks pull="right" styleClass="hidden-xs">
 			    <b:navLink value="Connexion" href="Connection.xhtml"></b:navLink>
@@ -27,9 +31,9 @@ xmlns:b="http://bootsfaces.net/ui">
 			</b:navBar>
 		</h:form>
 		 
-		  <h:form>
+		<!--  <h:form>
 		 	<h:commandButton value = "Supprimer Evenement" action="#{evenementControl.doSupression()}" ></h:commandButton>
-		 </h:form>
+		 </h:form> --> 
 		
 		 	
 	

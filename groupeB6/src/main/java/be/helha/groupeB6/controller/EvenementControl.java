@@ -1,6 +1,7 @@
 package be.helha.groupeB6.controller;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -8,6 +9,7 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import be.helha.groupeB6.entities.Evenement;
 import be.helha.groupeB6.entities.UploadPage;
@@ -15,16 +17,18 @@ import be.helha.groupeB6.sessionejb.GestionEvenementEJB;
 import be.helha.groupeB6.sessionejb.GestionUtilisateurEJB;
 
 @Named
-@RequestScoped
-public class EvenementControl {
+@SessionScoped
+public class EvenementControl implements Serializable{
 	
 	private Evenement evenement = new Evenement();
-	private String dateA,lieu;
+	private String lieu;
 	private String titre,description,typeCollecte, image;
 	private double objectifFinancier;
 	private boolean approuve;
+	private Date dateA;
 	
 	private UploadPage up = new UploadPage();
+	private List<Evenement> listeVoulue;
 	
 	@EJB
 	private GestionEvenementEJB gestionEvenement;
@@ -42,22 +46,15 @@ public class EvenementControl {
 	public String doSupression(){
 		return"SupressionEvenement.xhtml";
 	}
+	public String doGestion() {
+		return "GestionEvenement.xhtml";
+	}
 	
 	public void ajouterEvenement() {
 		byte[] images= up.uploadFile();
-
-		Date dateE=null;
-		SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-			
-			try {
-				dateE=df.parse(this.dateA);
-			} catch (ParseException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
 			if(!UtilisateurControl.utilisateurConnecte.getNom().equals("0"))
 			{
-				evenement = new Evenement(dateE,this.titre,this.description,this.typeCollecte,this.objectifFinancier,false,images,this.lieu) ;
+				evenement = new Evenement(this.dateA,this.titre,this.description,this.typeCollecte,this.objectifFinancier,false,images,this.lieu) ;
 				evenement.setUtilisateur(UtilisateurControl.utilisateurConnecte);
 				gestionEvenement.ajouterEvenement(evenement);
 			}
@@ -74,11 +71,23 @@ public class EvenementControl {
 		gestionEvenement.supprimerEvenement(e);
 	}
 	
-	public void afficherEvenementViaApprobation(boolean approuve,Evenement e) {
-		gestionEvenement.afficherEvenementViaApprobation(approuve);
-		gestionEvenement.modifierEvenement(e);
-	}
+	public void afficherEvenementViaApprobation(boolean approuve) {
 
+		listeVoulue =gestionEvenement.afficherEvenementViaApprobation(approuve);		
+	}
+	
+	public void supprimerEvenementAdmin(Evenement e)
+	{
+		gestionEvenement.supprimerEvenement(e);
+		afficherEvenementViaApprobation(false);
+	}
+	public void approuveEvenement(Evenement evt) {
+		System.out.println("Passe dans approuveEvnt");
+		evt.setApprouve(true);
+		gestionEvenement.modifierEvenement(evt);
+		afficherEvenementViaApprobation(false);
+	}
+	
 	public Evenement getEvenement() {
 		return evenement;
 	}
@@ -136,11 +145,11 @@ public class EvenementControl {
 		this.objectifFinancier = objectifFinancier;
 	}
 
-	public String getDateA() {
+	public Date getDateA() {
 		return dateA;
 	}
 
-	public void setDateA(String dateA) {
+	public void setDateA(Date dateA) {
 		this.dateA = dateA;
 	}
 
@@ -150,6 +159,22 @@ public class EvenementControl {
 
 	public void setUp(UploadPage up) {
 		this.up = up;
+	}
+
+	public String getLieu() {
+		return lieu;
+	}
+
+	public void setLieu(String lieu) {
+		this.lieu = lieu;
+	}
+
+	public List<Evenement> getListeVoulue() {
+		return listeVoulue;
+	}
+
+	public void setListeVoulue(List<Evenement> listeVoulue) {
+		this.listeVoulue = listeVoulue;
 	}
 	
 	

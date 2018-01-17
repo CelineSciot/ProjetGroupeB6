@@ -181,7 +181,7 @@ public class DAOLocalBean implements Serializable {
 	}
 	
 	public List<Evenement> afficherEvenementViaApprobation(boolean approuve){
-		String str="select e from Evenement where e.approuve= :Approuve";
+		String str="select e from Evenement e where e.approuve= :Approuve";
 		Query qUser = em.createQuery(str);
 		qUser.setParameter("Approuve",approuve);
 		List<Evenement> result= (List<Evenement>)qUser.getResultList();
