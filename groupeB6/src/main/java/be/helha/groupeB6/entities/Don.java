@@ -1,6 +1,8 @@
 package be.helha.groupeB6.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,7 +16,7 @@ public class Don implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private double montant;
-	
+
 	
 	
 	public Don(double montant) {
@@ -50,8 +52,8 @@ public class Don implements Serializable{
 
 
 	@Override
-	public String toString() {
-		return "Don [id=" + id + ", montant=" + montant + "]";
+	public String toString() { 
+		return  montant+" €";
 	}
 	
 	
