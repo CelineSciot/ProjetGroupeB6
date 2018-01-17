@@ -20,7 +20,7 @@ public class UploadPage implements Serializable{
 
 	private Part uploadedFile;
 	
-	public byte[] uploadFile() /*throws IOException*/ {
+	public byte[] uploadFile() {
 		InputStream input=null;
 		try {
 			input = uploadedFile.getInputStream();
