@@ -27,36 +27,48 @@ xmlns:b="http://bootsfaces.net/ui">
 			</b:navBar>
 		 </h:form>
 		<h1>S'incrire</h1>
+		<b:form>
+		  <b:carousel id="wizard" styleClass="wizardPseudoClass"
+		              style="width:400px; padding-top:20px"
+		              startAnimation="false"
+		              showIndicators="false"
+		              wrap="false">
+		    <b:carouselItem style="width:400px; height:230px">
+		      <b:panel title="Identification" look="primary">
+		        <b:inputText value = "#{utilisateurControl.mail}" label="Adresse email"/>
+		        <b:inputText value = "#{utilisateurControl.mdp}" label="Mot de passe"/>
+		      </b:panel>
+		    </b:carouselItem>
+		    <b:carouselItem style="width:400px;height:460px">
+		      <b:panel title="Donnée personelle" look="primary  ">
+		       
+			    <b:inputText value = "#{utilisateurControl.nom}" label="Nom"/>
+			    <b:inputText value = "#{utilisateurControl.prenom}" label="Prenom"/>
+			 	<b:inputText value = "#{utilisateurControl.numTel}" label="Téléphone/GSM"/>
+				<b:inputText value = "#{utilisateurControl.nationalite}" label="Nationalité"/>
+			    <b:datepicker label="Date de Naissance" value = "#{utilisateurControl.dateNaissance}"  mode="toggle-icon"/>
+		      </b:panel>
+		    </b:carouselItem>
+		    <b:carouselItem style="width:400px;height:230px">
+		      <b:panel title="Adresse" look="success">
+		        <b:inputText label="Zip code"  />
+		        <b:inputText label="City"  />
+		      </b:panel>
+		    </b:carouselItem>
+		    <b:carouselControl direction="right" >
+		      <b:button value="Previous step"
+		                onclick="$('.wizardPseudoClass').carousel('prev');$('.wizardPseudoClass').carousel('pause');"
+		                look="info" />
+		    </b:carouselControl>
+		    <b:carouselControl direction="left">
+		      <b:button value="Next step" style="position:absolute;right:0px"
+		                onclick="$('.wizardPseudoClass').carousel('next');$('.wizardPseudoClass').carousel('pause');"
+		                look="success" />
+		    </b:carouselControl>
+		  </b:carousel>
+		  <b:commandButton value = "S'inscrire" action="#{utilisateurControl.ajouterUtilisateur()}" ></b:commandButton>
+		</b:form>
 		
-		<h:form>
-			<h:panelGrid columns="2" class="table">
-				
-			    <h:outputText value="Nom:" />
-			    <h:inputText value = "#{utilisateurControl.nom}"/>
-			 
-			    <h:outputText value="Prenom:" />
-			    <h:inputText value = "#{utilisateurControl.prenom}"/>
-			 
-			    <h:outputText value="mail:" />
-			    <h:inputText value = "#{utilisateurControl.mail}"/>
-			 
-			    <h:outputText value="Téléphone:" />
-			    <h:inputText value = "#{utilisateurControl.numTel}"/>
-			    
-			    <h:outputText value="mot de passe:" />
-			    <h:inputText value = "#{utilisateurControl.mdp}"/>
-			    
-			    <h:outputText value="nationalité:" />
-			    <h:inputText value = "#{utilisateurControl.nationalite}"/>
-			    
-			    <h:outputText value="dateNaissance:" />
-			    <h:inputText value = "#{utilisateurControl.dateNaissance}"/>
-
-			 
-			    
-	   			 <h:commandButton value = "S'inscrire" action="#{utilisateurControl.ajouterUtilisateur()}" ></h:commandButton>
-			</h:panelGrid>
-		</h:form>
 		 	
 	
 		 
