@@ -9,7 +9,12 @@ xmlns:b="http://bootsfaces.net/ui">
 	</h:head>
 	<h:body>
 
-		 <h:form>
+		 
+		
+		
+		<b:container fluid="true">
+		  <b:row>
+		    <h:form>
 			<b:navBar brand="MSF" brandHref="index.xhtml" fluid="true">
 			  <b:navbarLinks>
 			    <b:navLink value="Faire un don" href="Don.xhtml"></b:navLink>
@@ -26,48 +31,62 @@ xmlns:b="http://bootsfaces.net/ui">
 			  </b:navbarLinks>
 			</b:navBar>
 		 </h:form>
-		<h1>S'incrire</h1>
-		<b:form>
-		  <b:carousel id="wizard" styleClass="wizardPseudoClass"
-		              style="width:400px; padding-top:20px"
-		              startAnimation="false"
-		              showIndicators="false"
-		              wrap="false">
-		    <b:carouselItem style="width:400px; height:230px">
-		      <b:panel title="Identification" look="primary">
-		        <b:inputText value = "#{utilisateurControl.mail}" label="Adresse email"/>
-		        <b:inputText value = "#{utilisateurControl.mdp}" label="Mot de passe"/>
-		      </b:panel>
-		    </b:carouselItem>
-		    <b:carouselItem style="width:400px;height:460px">
-		      <b:panel title="Donnée personelle" look="primary  ">
-		       
-			    <b:inputText value = "#{utilisateurControl.nom}" label="Nom"/>
-			    <b:inputText value = "#{utilisateurControl.prenom}" label="Prenom"/>
-			 	<b:inputText value = "#{utilisateurControl.numTel}" label="Téléphone/GSM"/>
-				<b:inputText value = "#{utilisateurControl.nationalite}" label="Nationalité"/>
-			    <b:datepicker label="Date de Naissance" value = "#{utilisateurControl.dateNaissance}"  mode="toggle-icon"/>
-		      </b:panel>
-		    </b:carouselItem>
-		    <b:carouselItem style="width:400px;height:230px">
-		      <b:panel title="Adresse" look="success">
-		        <b:inputText label="Zip code"  />
-		        <b:inputText label="City"  />
-		      </b:panel>
-		    </b:carouselItem>
-		    <b:carouselControl direction="right" >
-		      <b:button value="Previous step"
-		                onclick="$('.wizardPseudoClass').carousel('prev');$('.wizardPseudoClass').carousel('pause');"
-		                look="info" />
-		    </b:carouselControl>
-		    <b:carouselControl direction="left">
-		      <b:button value="Next step" style="position:absolute;right:0px"
-		                onclick="$('.wizardPseudoClass').carousel('next');$('.wizardPseudoClass').carousel('pause');"
-		                look="success" />
-		    </b:carouselControl>
-		  </b:carousel>
-		  <b:commandButton value = "S'inscrire" action="#{utilisateurControl.ajouterUtilisateur()}" ></b:commandButton>
-		</b:form>
+		  </b:row>
+		  <b:row>
+		    <b:column medium-screen="4">
+		      <h1>S'incrire</h1>
+		    </b:column>
+		    <b:column medium-screen="4">
+		      <b:form>
+				  <b:carousel id="wizard" styleClass="wizardPseudoClass"
+				              style="width:400px; padding-top:20px"
+				              startAnimation="false"
+				              showIndicators="false"
+				              wrap="false">
+				    <b:carouselItem style="width:400px; height:230px">
+				      <b:panel title="Identification" look="primary">
+				        <b:inputText value = "#{utilisateurControl.mail}" label="Adresse email"/>
+				        <b:inputText value = "#{utilisateurControl.mdp}" label="Mot de passe"/>
+				      </b:panel>
+				    </b:carouselItem>
+				    <b:carouselItem style="width:400px;height:460px">
+				      <b:panel title="Donnée personelle" look="primary  ">
+				       
+					    <b:inputText value = "#{utilisateurControl.nom}" label="Nom"/>
+					    <b:inputText value = "#{utilisateurControl.prenom}" label="Prenom"/>
+					 	<b:inputText value = "#{utilisateurControl.numTel}" label="Téléphone/GSM"/>
+						<b:inputText value = "#{utilisateurControl.nationalite}" label="Nationalité"/>
+					    <b:datepicker label="Date de Naissance" value = "#{utilisateurControl.dateNaissance}"  mode="toggle-icon"/>
+				      </b:panel>
+				    </b:carouselItem>
+				    <b:carouselItem style="width:400px;height:230px">
+				      <b:panel title="Adresse" look="success">
+				        <b:inputText label="Zip code"  />
+				        <b:inputText label="City"  />
+				      </b:panel>
+				    </b:carouselItem>
+				    <b:carouselControl direction="right" >
+				      <b:button value="précédent"
+				                onclick="$('.wizardPseudoClass').carousel('prev');$('.wizardPseudoClass').carousel('pause');"
+				                look="info" />
+				    </b:carouselControl>
+				    <b:carouselControl direction="left">
+				      <b:button value="suivant" style="position:absolute;right:0px"
+				                onclick="$('.wizardPseudoClass').carousel('next');$('.wizardPseudoClass').carousel('pause');"
+				                look="success" />
+				    </b:carouselControl>
+				  </b:carousel>
+				  <b:commandButton value = "S'inscrire" action="#{utilisateurControl.ajouterUtilisateur()}" ></b:commandButton>
+				</b:form>
+		    </b:column>
+		    <b:column medium-screen="4">
+		      
+		    </b:column>
+		  </b:row>
+		 
+		</b:container>
+		
+		
 		
 		 	
 	
