@@ -54,9 +54,39 @@ xmlns:b="http://bootsfaces.net/ui">
 						
 					</h:panelGrid>	
 				
-			 		<h:commandButton value="Connection" class="form-control" action="#{utilisateurControl.seConnecter()}"></h:commandButton>
-	
+			 		
+					<b:commandButton value="Connection" class="form-control" action="#{utilisateurControl.seConnecter()}"></b:commandButton>
+					<b:commandButton value="S'enregistrer" class="form-control" action="#{utilisateurControl.doCreerCompte()}"></b:commandButton>
+					
+					
+					
+					
+					
 			   </h:form>
+			   
+			  
+			   		<b:panel >
+					  <h:form>
+					    <b:datepicker label="Datepicker"  mode="toggle-icon"/>
+					    
+					   
+					    <b:selectOneMenu label="SelectOneMenu" >
+						    <f:selectItem itemValue="one" itemLabel="one"></f:selectItem>
+						    <f:selectItem itemValue="two" itemLabel="two"></f:selectItem>
+					    </b:selectOneMenu>
+					   
+					    <br />
+					    
+					    <b:datepicker id="cdate3" mode="toggle-icon" showWeek="true"
+                  firstDay="1" value="#{dateBean.cdate}" required="true"
+                  label="Date:" label-col-sm="4" col-sm="4"  />
+
+					    
+					    
+					  </h:form>
+</b:panel>
+			   
+			   
 		    </h:panelGroup>
 
 		    #{utilisateurControl.utilisateurConnecte.dons}

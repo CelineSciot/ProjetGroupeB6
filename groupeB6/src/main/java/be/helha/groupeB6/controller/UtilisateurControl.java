@@ -41,6 +41,11 @@ public class UtilisateurControl {
 		return "ActionAjout.xhtml?faces-redirect=true";
 	}
 	
+public String doCreerCompte() {
+		
+		return "CreerCompte.xhtml?faces-redirect=true";
+	}
+	
 	public List<Utilisateur> doUtil(){
 		return gestionUtilisateur.SelectionnerUtilisateur();
 	}

@@ -38,10 +38,6 @@ xmlns:b="http://bootsfaces.net/ui">
 			</h:panelGrid>
 	  		
 	  	</h:form>
-	  	
-	  	<h:form>
-	  	
-		 </h:form>
 		 
 		 <h:form>
 			<h:dataTable value = "#{donControl.doDon()}" var = "evt"		
@@ -61,6 +57,19 @@ xmlns:b="http://bootsfaces.net/ui">
 			 </h:dataTable>
 	  		
 	  	</h:form>
+	  	<h:form>
+		  <b:dataTable value="#{donControl.doDon()}"
+		               var="don"
+		               excel="true"
+		               csv="true"
+		               pdf="true"
+		               copy="true"
+		               print="true"
+		               row-style-class="#{car.enginePower>100?'light-power':'light'}, #{car.enginePower>100?'dark-power':'dark'} ">
+		    <b:dataTableColumn value="#{don.montant}" />
+		  </b:dataTable>
+		</h:form>
+	  	
 		 
 		 
 		 

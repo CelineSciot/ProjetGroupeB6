@@ -28,24 +28,22 @@ xmlns:b="http://bootsfaces.net/ui">
 			</b:navBar>
 		 </h:form>
 
-		<h:form>
-			<h:dataTable value = "#{evenementControl.doUtil()}" var = "evt"		
-			   			headerClass = "UserTableHeader"
-			   			rowClasses = "UserTableOddRow,UserTableEvenRow" style="width:100%;">
-			   			<h:column>
-			   			
-			   			<div class="panel-group" style="width:80%;text-align:center;margin-left:10%;">
-			    <div class="panel panel-default">
-			      <div class="panel-heading"><h:commandLink value="#{evt.titre}"  action="#{evenementControl.doDetails(evt)}"></h:commandLink></div>
-			      <div class="panel-body">
-			     <img src="data:image/jpg;base64,#{evt.images}" width="380"></img><br/>
-			      Date de l'évènement : #{evt.dateA}
-			      </div>
-			    </div>
-			    </div>
-			    </h:column>
-			 </h:dataTable>
-	  		
-	  	</h:form>
+	  	<h:form>
+		  <b:dataTable value="#{evenementControl.doUtil()}"
+		               var="evt"
+		               excel="true"
+		               csv="true"
+		               pdf="true"
+		               copy="true"
+		               print="true"
+		               row-style-class="#{car.enginePower>100?'light-power':'light'}, #{car.enginePower>100?'dark-power':'dark'} ">
+		    <b:dataTableColumn value="#{evt.titre}" >
+			    <br /><h1><h:commandLink value="#{evt.titre}"  action="#{evenementControl.doDetails(evt)}"/></h1><br />
+			    <img src="data:image/jpg;base64,#{evt.images}" width="50%"></img>
+		    </b:dataTableColumn>
+		    <b:dataTableColumn value="#{evt.dateA}" ></b:dataTableColumn>
+		  </b:dataTable>
+		</h:form>
+
 </h:body>
 </html>

@@ -25,12 +25,38 @@ xmlns:b="http://bootsfaces.net/ui">
 			    <b:navLink value="Connexion" href="Connection.xhtml"></b:navLink>
 			  </b:navbarLinks>
 			</b:navBar>
-		</h:form>
-		 
-		  <h:form>
-		 	<h:commandButton value = "Supprimer Evenement" action="#{evenementControl.doSupression()}" ></h:commandButton>
 		 </h:form>
+		<h1>S'incrire</h1>
 		
+		<h:form>
+			<h:panelGrid columns="2" class="table">
+				
+			    <h:outputText value="Nom:" />
+			    <h:inputText value = "#{utilisateurControl.nom}"/>
+			 
+			    <h:outputText value="Prenom:" />
+			    <h:inputText value = "#{utilisateurControl.prenom}"/>
+			 
+			    <h:outputText value="mail:" />
+			    <h:inputText value = "#{utilisateurControl.mail}"/>
+			 
+			    <h:outputText value="Téléphone:" />
+			    <h:inputText value = "#{utilisateurControl.numTel}"/>
+			    
+			    <h:outputText value="mot de passe:" />
+			    <h:inputText value = "#{utilisateurControl.mdp}"/>
+			    
+			    <h:outputText value="nationalité:" />
+			    <h:inputText value = "#{utilisateurControl.nationalite}"/>
+			    
+			    <h:outputText value="dateNaissance:" />
+			    <h:inputText value = "#{utilisateurControl.dateNaissance}"/>
+
+			 
+			    
+	   			 <h:commandButton value = "S'inscrire" action="#{utilisateurControl.ajouterUtilisateur()}" ></h:commandButton>
+			</h:panelGrid>
+		</h:form>
 		 	
 	
 		 
