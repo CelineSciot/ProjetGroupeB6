@@ -14,8 +14,6 @@ import org.apache.commons.io.IOUtils;
 
 import com.sun.xml.ws.policy.privateutil.PolicyUtils.IO;
 
-
-
 @Named
 @ViewScoped
 public class UploadPage implements Serializable{
