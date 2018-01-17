@@ -19,7 +19,7 @@ import be.helha.groupeB6.sessionejb.GestionUtilisateurEJB;
 public class EvenementControl {
 	
 	private Evenement evenement = new Evenement();
-	private String dateA;
+	private String dateA,lieu;
 	private String titre,description,typeCollecte, image;
 	private double objectifFinancier;
 	private boolean approuve;
@@ -55,8 +55,13 @@ public class EvenementControl {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-		evenement = new Evenement(dateE,this.titre,this.description,this.typeCollecte,this.objectifFinancier,false,images,UtilisateurControl.utilisateurConnecte.getId()) ;
-		gestionEvenement.ajouterEvenement(evenement);
+			if(!UtilisateurControl.utilisateurConnecte.getNom().equals("0"))
+			{
+				evenement = new Evenement(dateE,this.titre,this.description,this.typeCollecte,this.objectifFinancier,false,images,this.lieu) ;
+				evenement.setUtilisateur(UtilisateurControl.utilisateurConnecte);
+				gestionEvenement.ajouterEvenement(evenement);
+			}
+		
 		this.dateA=null;
 		this.titre="";
 		this.description="";

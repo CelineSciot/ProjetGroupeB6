@@ -107,6 +107,10 @@ public class DAOLocalBean implements Serializable {
 	}
 	
 	public void ajouterEvenement(Evenement evenement) {
+		
+		Utilisateur m=em.merge(evenement.getUtilisateur());
+		
+		evenement.setUtilisateur(m);
 		em.persist(evenement);
 	}
 	

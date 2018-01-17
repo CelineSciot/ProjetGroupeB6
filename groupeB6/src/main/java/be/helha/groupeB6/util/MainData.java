@@ -40,17 +40,14 @@ public class MainData {
 			e.printStackTrace();
 		}
 		
-		Evenement evt1 = new Evenement(date, "Marche nocturne", evtD1, "individuel", 1700,true, images,2);
-		
+		Evenement evt1 = new Evenement(date, "Marche nocturne", evtD1, "individuel", 1700,true, images,"Paris");
+		evt1.setUtilisateur(user);
 		String evtD2 ="Un marché aux jouets sera organisé où les bénéfices seront reversés à médecin sans frontières.";
-		Evenement evt2 = new Evenement(date, "Marché aux jouets", evtD2, "collectif", 500,false, images,2);
-		
+		Evenement evt2 = new Evenement(date, "Marché aux jouets", evtD2, "collectif", 500,false, images,"Bruxelles");
+		evt2.setUtilisateur(admin);
 		String evtD3 ="Marathon de Durbuy dans une ambiance assurée. Participation: 5€ /couple";
-		Evenement evt3 = new Evenement(date, "Marathon de Durbuy", evtD3, "collectif", 15220,false, images,2);
-		
-		/*user.addEvenement(evt1);
-		user.addEvenement(evt2);
-		user.addEvenement(evt3);
+		Evenement evt3 = new Evenement(date, "Marathon de Durbuy", evtD3, "collectif", 15220,false, images,"Soignies");
+		evt3.setUtilisateur(user);
 		
 		EntityManagerFactory emf =Persistence.createEntityManagerFactory("dbb6");
 		EntityManager em = emf.createEntityManager();

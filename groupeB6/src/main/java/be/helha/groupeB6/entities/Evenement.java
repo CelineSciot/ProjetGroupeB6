@@ -4,11 +4,13 @@ import java.io.Serializable;
 import java.util.Base64;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Evenement implements Serializable{
@@ -16,10 +18,12 @@ public class Evenement implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	private int idUtilisateur;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	private Utilisateur utilisateur;
 	
 	private Date dateA;
-	private String titre,description,typeCollecte;
+	private String titre,description,typeCollecte,lieu;
 	
 	private double objectifFinancier;
 	private boolean approuve;
@@ -30,7 +34,7 @@ public class Evenement implements Serializable{
 
 	
 	public Evenement(Date dateA, String titre, String description, String typeCollecte,
-			double objectifFinancier, boolean approuve, byte[] images,int idUtilisateur) {
+			double objectifFinancier, boolean approuve, byte[] images,String lieu) {
 		super();
 		this.dateA = dateA;
 		this.titre = titre;
@@ -39,7 +43,7 @@ public class Evenement implements Serializable{
 		this.objectifFinancier = objectifFinancier;
 		this.approuve = approuve;
 		this.images = images;
-		this.idUtilisateur=idUtilisateur;
+		this.lieu=lieu;
 	}
 
 	public Evenement() {}
@@ -101,6 +105,14 @@ public class Evenement implements Serializable{
 
 	public void setImages(byte[] images) {
 		this.images = images;
+	}
+
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
 	}
 
 	

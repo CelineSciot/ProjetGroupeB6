@@ -20,7 +20,7 @@ public class UtilisateurControl {
 	
 	private Utilisateur utilisateur = new Utilisateur();
 	private List<Utilisateur> listeUsers;
-	public static Utilisateur utilisateurConnecte;
+	public static Utilisateur utilisateurConnecte= new Utilisateur("0","0","0","0","0","0",null);
 	
 	private String numTel;
 	private String nom,prenom,mail;
@@ -59,16 +59,17 @@ public String doCreerCompte() {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			utilisateur = new Utilisateur(this.nom, this.prenom, this.mail, this.numTel, this.mdp, this.nationalite,dateE);
-			gestionUtilisateur.ajouterUtilisateur(utilisateur);	
-			System.out.println(this.nom);
-			this.numTel="";
-			this.nom="";
-			this.prenom="";
-			this.mail="";
-			this.mdp="";
-			this.nationalite="";
-			this.dateNaissance= null;	
+
+				utilisateur = new Utilisateur(this.nom, this.prenom, this.mail, this.numTel, this.mdp, this.nationalite,dateE);
+				gestionUtilisateur.ajouterUtilisateur(utilisateur);	
+				System.out.println(this.nom);
+				this.numTel="";
+				this.nom="";
+				this.prenom="";
+				this.mail="";
+				this.mdp="";
+				this.nationalite="";
+				this.dateNaissance= null;	
 		}
 	
 	public void supprimerUtilisateur(Utilisateur u) {

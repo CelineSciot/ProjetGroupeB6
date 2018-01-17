@@ -20,7 +20,7 @@
 	
 	
 	
-	    	  <!--   <persistence-unit name="dbb6" transaction-type="RESOURCE_LOCAL">
+	  <!--     <persistence-unit name="dbb6" transaction-type="RESOURCE_LOCAL">
 		 
 		<class>be.helha.groupeB6.entities.Utilisateur</class>
 		<class>be.helha.groupeB6.entities.Administrateur</class>
