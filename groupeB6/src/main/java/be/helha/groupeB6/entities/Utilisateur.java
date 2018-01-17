@@ -7,6 +7,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,7 +29,7 @@ public class Utilisateur implements Serializable{
 	@OneToOne(cascade=CascadeType.ALL)//DANGER => ALL
 	private Adresse domicile;
 	
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	private Set<Don> dons= new HashSet<Don>();
 	
 	/*@OneToMany(cascade=CascadeType.ALL)

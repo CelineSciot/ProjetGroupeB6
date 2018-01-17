@@ -25,7 +25,7 @@ public class UtilisateurControl {
 	private String numTel;
 	private String nom,prenom,mail;
 	private String mdp,nationalite;
-	private	Date  dateNaissance;
+	private	String  dateNaissance;
 	private String messageErreur;
 	
 	@EJB
@@ -51,7 +51,15 @@ public String doCreerCompte() {
 	}
 	
 	public void ajouterUtilisateur() {
-			utilisateur = new Utilisateur(this.nom, this.prenom, this.mail, this.numTel, this.mdp, this.nationalite,this.dateNaissance);
+			Date dateE=null;
+			SimpleDateFormat df = new SimpleDateFormat("dd/MM/YY");
+			try {
+				dateE=df.parse(this.dateNaissance);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			utilisateur = new Utilisateur(this.nom, this.prenom, this.mail, this.numTel, this.mdp, this.nationalite,dateE);
 			gestionUtilisateur.ajouterUtilisateur(utilisateur);	
 			System.out.println(this.nom);
 			this.numTel="";
@@ -132,11 +140,11 @@ public String doCreerCompte() {
 		this.nationalite = nationalite;
 	}
 
-	public Date getDateNaissance() {
+	public String getDateNaissance() {
 		return dateNaissance;
 	}
 
-	public void setDateNaissance(Date dateNaissance) {
+	public void setDateNaissance(String dateNaissance) {
 		this.dateNaissance = dateNaissance;
 	}
 
