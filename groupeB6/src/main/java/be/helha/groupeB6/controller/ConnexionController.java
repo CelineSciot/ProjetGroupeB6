@@ -11,6 +11,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.glassfish.admin.amx.j2ee.SessionBean;
 
@@ -51,6 +52,12 @@ public class ConnexionController implements Serializable{
 				utilisateurConnecte = null;
 			}
 		}
+	}
+	
+	public String logout() {
+		HttpSession session = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+		session.invalidate();
+		return "index.xhtml?faces-rederiect=true;";
 	}
 	
 	public static Utilisateur getUtilisateurConnecte() {
