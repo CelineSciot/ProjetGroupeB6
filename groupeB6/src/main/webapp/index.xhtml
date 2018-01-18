@@ -21,8 +21,9 @@ xmlns:b="http://bootsfaces.net/ui">
 			    <b:navLink value="A propos" href="About.xhtml"></b:navLink>
 			    <b:navLink value="Contact" href="Contact.xhtml"></b:navLink>
 			    <b:dropMenu value="Gestion Evenement">
-			      <b:navLink value="gérer évenement" href="#{evenementControl.doGestion()}"></b:navLink>
+			      <b:navLink value="Gérer évenement" href="#{evenementControl.doGestion()}"></b:navLink>
 			      <b:navLink value="Supprimer des évènements" href="#{evenementControl.doSupression()}"></b:navLink>
+			      <b:navLink value="Ajouter des évènements" href="#{utilisateurControl.doAjoutEvent()}"></b:navLink>
 			    </b:dropMenu>
 			  </b:navbarLinks>
 			  <b:navbarLinks pull="right" styleClass="hidden-xs">
