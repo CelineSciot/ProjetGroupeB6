@@ -9,13 +9,7 @@ import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
-import org.glassfish.admin.amx.j2ee.SessionBean;
-
-import com.sun.istack.logging.Logger;
 
 import be.helha.groupeB6.entities.Utilisateur;
 import be.helha.groupeB6.sessionejb.GestionUtilisateurEJB;
@@ -37,6 +31,8 @@ public class ConnexionController implements Serializable{
 	private String j_password,nationalite;
 	private	String  dateNaissance;
 	
+	private boolean connect;
+	
 	public void seConnecter() {
 		listeUsers = gestionUtilisateur.SelectionnerUtilisateur();
 		System.out.println("doConnect");
@@ -47,6 +43,7 @@ public class ConnexionController implements Serializable{
 		for(Utilisateur u : listeUsers) {
 			if(u.getMail().equals(mail)) {
 				utilisateurConnecte= u;
+				connect = true;
 				return;
 			}else{
 				utilisateurConnecte = null;
@@ -57,7 +54,8 @@ public class ConnexionController implements Serializable{
 	public String logout() {
 		HttpSession session = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true);
 		session.invalidate();
-		return "index.xhtml?faces-rederiect=true;";
+		connect = false;
+		return "index.xhtml?faces-redirect=true;";
 	}
 	
 	public static Utilisateur getUtilisateurConnecte() {
@@ -146,6 +144,14 @@ public class ConnexionController implements Serializable{
 
 	public void setDateNaissance(String dateNaissance) {
 		this.dateNaissance = dateNaissance;
+	}
+
+	public boolean isConnect() {
+		return connect;
+	}
+
+	public void setConnect(boolean connect) {
+		this.connect = connect;
 	}
 	
 	

@@ -36,7 +36,9 @@ xmlns:b="http://bootsfaces.net/ui">
 			    
 			  </b:navbarLinks>
 			  <b:navbarLinks pull="right" styleClass="hidden-xs">
-			    <b:navLink value="Connexion" href="login.xhtml"></b:navLink>
+			    <h:form>
+			    	<h:commandButton value="Deconnexion" action="#{connexionController.logout()}" rendered="#{connexionController.connect}" ></h:commandButton>
+			    </h:form>
 			  </b:navbarLinks>
 			</b:navBar>
 		  </b:row>
