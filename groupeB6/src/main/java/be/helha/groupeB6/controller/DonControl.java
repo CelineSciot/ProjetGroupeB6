@@ -13,6 +13,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 import be.helha.groupeB6.entities.Don;
+import be.helha.groupeB6.entities.Utilisateur;
 import be.helha.groupeB6.sessionejb.GestionDonEJB;
 import be.helha.groupeB6.sessionejb.GestionEvenementEJB;
 import be.helha.groupeB6.sessionejb.GestionUtilisateurEJB;
@@ -50,7 +51,11 @@ public class DonControl {
 		gestionUser.modifierUser(UtilisateurControl.utilisateurConnecte);
 		this.montant=0;
 	}
-
+	
+	public Set<Don> afficherDonViaUser(){
+		
+		return UtilisateurControl.utilisateurConnecte.getDons();
+	}
 
 	public Don getDon() {
 		return don;
