@@ -11,6 +11,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 
+import be.helha.groupeB6.entities.GroupeUtilisateur;
 import be.helha.groupeB6.entities.Utilisateur;
 import be.helha.groupeB6.sessionejb.GestionUtilisateurEJB;
 
@@ -22,7 +23,6 @@ public class ConnexionController implements Serializable{
 	private String messageErreur;
 	private Utilisateur utilisateur = new Utilisateur();
 	private List<Utilisateur> listeUsers;
-	
 	@EJB
 	private GestionUtilisateurEJB gestionUtilisateur;
 	
@@ -30,31 +30,38 @@ public class ConnexionController implements Serializable{
 	private String nom,prenom,j_username;
 	private String j_password,nationalite;
 	private	String  dateNaissance;
+	private int compteur;
+	private boolean role;
 	
 	private boolean connect;
 	
 	public void seConnecter() {
 		listeUsers = gestionUtilisateur.SelectionnerUtilisateur();
-		System.out.println("doConnect");
 		String mail = FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
-
-		
-		System.out.println(mail);
-		for(Utilisateur u : listeUsers) {
-			if(u.getMail().equals(mail)) {
-				utilisateurConnecte= u;
+		for(compteur = 0 ; compteur<listeUsers.size();compteur++) {
+			if(listeUsers.get(compteur).getMail().equals(mail)) {
+				utilisateurConnecte= listeUsers.get(compteur);
+				
 				connect = true;
-				return;
-			}else{
-				utilisateurConnecte = null;
+				
 			}
 		}
 	}
+	
+	public String doConnect() {
+		return "login.xhtml?faces-redirect=true";
+	}
+	
+	public String doAdmin() {
+		return "indexAdmin.xhtml?faces-redirect=true";
+	}
+
 	
 	public String logout() {
 		HttpSession session = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true);
 		session.invalidate();
 		connect = false;
+		role = false;
 		return "index.xhtml?faces-redirect=true;";
 	}
 	
@@ -153,6 +160,16 @@ public class ConnexionController implements Serializable{
 	public void setConnect(boolean connect) {
 		this.connect = connect;
 	}
+
+	public boolean getRole() {
+		return role;
+	}
+
+	public void setRole(boolean role) {
+		this.role = role;
+	}
+	
+	
 	
 	
 }

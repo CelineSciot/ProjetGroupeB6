@@ -8,6 +8,7 @@ import javax.ejb.Stateless;
 
 import be.helha.groupeB6.dao.DAOLocalBean;
 import be.helha.groupeB6.entities.Evenement;
+import be.helha.groupeB6.entities.GroupeUtilisateur;
 import be.helha.groupeB6.entities.Utilisateur;
 
 @Stateless
@@ -44,6 +45,12 @@ public class GestionUtilisateurEJB implements IGestionUtilisateurEJBRemote {
 	@Override
 	public Utilisateur ajouterRole(Utilisateur u) {
 		dao.ajouterRole(u);
+		return null;
+	}
+	
+	@Override
+	public List<GroupeUtilisateur> recupRole() {
+		dao.recupRole();
 		return null;
 	}
 	

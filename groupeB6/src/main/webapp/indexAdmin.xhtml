@@ -5,12 +5,11 @@ xmlns:h="http://java.sun.com/jsf/html"
 xmlns:jsf="http://xmlns.jcp.org/jsf"
 xmlns:b="http://bootsfaces.net/ui">
 	<h:head>
-		<title>Liste des dons</title>
-		
+		<title>index</title>
 	</h:head>
-<h:body>
-		
-		 <b:navBar brand="MSF" brandHref="index.xhtml" fluid="true" onclick="#{connexionController.seConnecter()}">
+	<h:body>
+
+			<b:navBar brand="MSF" brandHref="index.xhtml" fluid="true" onclick="#{connexionController.seConnecter()}">
 			  <b:navbarLinks>
 			    <b:dropMenu value="Gestion Evenement" rendered="#{connexionController.connect}">
 			      <b:navLink value="Gérer évenement" href="#{evenementControl.doGestion()}" ></b:navLink>
@@ -26,24 +25,40 @@ xmlns:b="http://bootsfaces.net/ui">
 			    </h:form>
 			  </b:navbarLinks>
 			</b:navBar>
-
+			
+			
 		<h:form>
-			<h:dataTable value = "#{utilisateurControl.doUtil()}" var = "u"		
+			<h:dataTable value = "#{evenementControl.afficherEvenementSite()}" var = "e"		
 			   			headerClass = "UserTableHeader"
 			   			rowClasses = "UserTableOddRow,UserTableEvenRow" style="width:100%;">
 			   			
-			   			 <h:column>    				
-						      <f:facet name = "header">Utilisateur</f:facet>    				
-						     #{u.nom}
-						 </h:column>
-						  
-						  <h:column>    				
-						      <f:facet name = "header">Don</f:facet>    				
-						     #{u.dons}
+			   			<h:column>    				
+						     		 <b:row>
+									  <b:column col-sm="6" col-md="6" offset="3">
+									    <b:thumbnail>
+									      <img src="data:image/jpg;base64,#{e.images}" width="380"></img>
+									      <f:facet name="caption">
+									        <h3>#{e.titre}</h3> 
+									        <p>
+									       
+												<b:accordion>
+													<b:panel id="panel1" title="Description">#{e.description}</b:panel>
+												</b:accordion>
+
+									        </p> 
+									        <p class="fa fa-calendar fa-lg"> #{e.dateA}</p><br/>
+									        <p class="fa fa-map-marker fa-lg"> #{e.lieu}</p>
+									      </f:facet>
+									    </b:thumbnail>
+									  </b:column> 
+									</b:row>
+																						     
 						 </h:column>
 						 
 			 </h:dataTable>
 	  		
 	  	</h:form>
-</h:body>
+		
+			
+		</h:body>
 </html>

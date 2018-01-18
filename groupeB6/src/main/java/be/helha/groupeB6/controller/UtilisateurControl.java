@@ -21,8 +21,7 @@ public class UtilisateurControl {
 	
 	private Utilisateur utilisateur = new Utilisateur();
 	private List<Utilisateur> listeUsers;
-	
-	public static Utilisateur utilisateurConnecte;
+
 	
 	private String numTel;
 	private String nom,prenom,mail;
@@ -73,23 +72,6 @@ public class UtilisateurControl {
 	
 	public void supprimerUtilisateur(Utilisateur u) {
 		gestionUtilisateur.supprimerUtilisateur(u);
-	}
-	
-
-	public void seConnecter() {
-		listeUsers = gestionUtilisateur.SelectionnerUtilisateur();
-		
-		for(Utilisateur u : listeUsers) {
-			if(u.getMail().equals(mail) && u.getMdp().equals(mdp)) {
-				utilisateurConnecte= u;
-				messageErreur="Connection établie";
-				return;
-			}
-			
-		}
-
-		messageErreur= "Mot de passe ou login incorrect";
-		
 	}
 
 	public String getNumTel() {
@@ -163,15 +145,6 @@ public class UtilisateurControl {
 	public void setUtilisateur(Utilisateur utilisateur) {
 		this.utilisateur = utilisateur;
 	}
-
-	public Utilisateur getUtilisateurConnecte() {
-		return utilisateurConnecte;
-	}
-
-	public void setUtilisateurConnecte(Utilisateur utilisateurConnecte) {
-		this.utilisateurConnecte = utilisateurConnecte;
-	}
-
 
 	
 	

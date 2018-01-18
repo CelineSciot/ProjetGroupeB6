@@ -85,6 +85,14 @@ public class DAOLocalBean implements Serializable {
 		return result.get(0);
 	}
 	
+	public List<GroupeUtilisateur> recupRole() {
+		String str="select u from GroupeUtilisateur u";
+		Query qUserGr = em.createQuery(str);
+		List<GroupeUtilisateur> result= (List<GroupeUtilisateur>)qUserGr.getResultList();
+		System.out.println(result.size());
+		return result;
+	}
+	
 	
 	//CRUD
 	public void ajouterUtilisateur(Utilisateur u) {
