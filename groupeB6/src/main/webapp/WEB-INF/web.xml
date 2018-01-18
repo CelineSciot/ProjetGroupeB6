@@ -40,6 +40,7 @@ version="3.1">
 			<url-pattern>/GestionEvenement.xhtml</url-pattern>
 			<url-pattern>/SupressionUtilisateur.xhtml</url-pattern>
 			<url-pattern>/SupressionEvenement.xhtml</url-pattern>
+			<url-pattern>/ListeDonAdmin.xhtml</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
 			<role-name>role_admin</role-name>
@@ -51,6 +52,8 @@ version="3.1">
 			<web-resource-name>All Resources</web-resource-name>
 			<url-pattern>/Don.xhtml</url-pattern>
 			<url-pattern>/ListeDonUtilisateur.xhtml</url-pattern>
+			<url-pattern>/ActionAjout.xhtml</url-pattern>
+			<url-pattern>/ListeEvenementUtilisateur.xhtml</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
 			<role-name>role_user</role-name>
