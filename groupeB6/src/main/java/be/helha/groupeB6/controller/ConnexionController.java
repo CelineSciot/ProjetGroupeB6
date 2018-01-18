@@ -1,14 +1,20 @@
 package be.helha.groupeB6.controller;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
+import java.util.logging.Level;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 
 import org.glassfish.admin.amx.j2ee.SessionBean;
+
+import com.sun.istack.logging.Logger;
 
 import be.helha.groupeB6.entities.Utilisateur;
 import be.helha.groupeB6.sessionejb.GestionUtilisateurEJB;
@@ -46,7 +52,7 @@ public class ConnexionController implements Serializable{
 			}
 		}
 	}
-
+	
 	public static Utilisateur getUtilisateurConnecte() {
 		return utilisateurConnecte;
 	}

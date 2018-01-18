@@ -10,23 +10,31 @@ xmlns:b="http://bootsfaces.net/ui">
 	</h:head>
 <h:body>
 		
-		 <h:form>
-			<b:navBar brand="MSF" brandHref="index.xhtml" fluid="true">
+		 <b:navBar brand="MSF" brandHref="index.xhtml" fluid="true" onclick="#{connexionController.seConnecter()}">
 			  <b:navbarLinks>
-			    <b:navLink value="Faire un don" href="Don.xhtml"></b:navLink>
+			  <b:dropMenu value="Don">
+			        <b:navLink value="Faire un don" href="Don.xhtml"></b:navLink>
+			          <b:navLink value="Historique de mes dons" href="ListeDonUtilisateur.xhtml"></b:navLink>
+			    </b:dropMenu>
 			    <b:dropMenu value="Actions">
 			      <b:navLink value="Voir les evenements en cours" href="#{utilisateurControl.doNext()}"></b:navLink>
 			      <b:navLink value="Créer un événement" href="#{utilisateurControl.doAjoutEvent()}"></b:navLink>
 			    </b:dropMenu>
-			    <b:navLink value="Nouvelles" href="#"></b:navLink>
-			    <b:navLink value="A propos" href="Apropos.xhtml"></b:navLink>
+			    
+			    <b:dropMenu value="Gestion Evenement">
+			      <b:navLink value="Gérer évenement" href="#{evenementControl.doGestion()}"></b:navLink>
+			      <b:navLink value="Supprimer des évènements" href="#{evenementControl.doSupression()}"></b:navLink>
+			      <b:navLink value="Ajouter des évènements" href="#{utilisateurControl.doAjoutEvent()}"></b:navLink>
+			    </b:dropMenu>
+
+			    <b:navLink value="A propos" href="About.xhtml"></b:navLink>
 			    <b:navLink value="Contact" href="Contact.xhtml"></b:navLink>
+			    
 			  </b:navbarLinks>
 			  <b:navbarLinks pull="right" styleClass="hidden-xs">
-			    <b:navLink value="Connexion" href="Connection.xhtml"></b:navLink>
+			    <b:navLink value="Connexion" href="login.xhtml"></b:navLink>
 			  </b:navbarLinks>
 			</b:navBar>
-		 </h:form>
 
 		<h:form>
 			<h:dataTable value = "#{donControl.afficherDonViaUser()}" var = "don"		

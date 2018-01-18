@@ -53,10 +53,10 @@ public class EvenementControl implements Serializable{
 	
 	public void ajouterEvenement() {
 		byte[] images= up.uploadFile();
-			if(!UtilisateurControl.utilisateurConnecte.getNom().equals("0"))
+			if(!ConnexionController.utilisateurConnecte.getNom().equals("0"))
 			{
 				evenement = new Evenement(this.dateA,this.titre,this.description,this.typeCollecte,this.objectifFinancier,false,images,this.lieu) ;
-				evenement.setUtilisateur(UtilisateurControl.utilisateurConnecte);
+				evenement.setUtilisateur(ConnexionController.utilisateurConnecte);
 				gestionEvenement.ajouterEvenement(evenement);
 			}
 		
@@ -91,7 +91,7 @@ public class EvenementControl implements Serializable{
 	
 	public List<Evenement> afficherEvenementUser() {
 		
-		return gestionEvenement.afficherEvenementUser(UtilisateurControl.utilisateurConnecte);
+		return gestionEvenement.afficherEvenementUser(ConnexionController.utilisateurConnecte);
 		
 	}
 	public Evenement getEvenement() {
