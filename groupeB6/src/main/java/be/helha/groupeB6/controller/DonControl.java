@@ -38,7 +38,7 @@ public class DonControl {
 	
 	public void doDon()
 	{
-		dons = UtilisateurControl.utilisateurConnecte.getDons();
+		dons = ConnexionController.utilisateurConnecte.getDons();
 		System.out.println(dons);	
 		
 	}
@@ -47,14 +47,14 @@ public class DonControl {
 	public void ajouterDon() {
 		don = new Don(this.montant);
 		//gestionDon.ajouterDon(don);
-		UtilisateurControl.utilisateurConnecte.addDon(don);
-		gestionUser.modifierUser(UtilisateurControl.utilisateurConnecte);
+		ConnexionController.utilisateurConnecte.addDon(don);
+		gestionUser.modifierUser(ConnexionController.utilisateurConnecte);
 		this.montant=0;
 	}
 	
 	public Set<Don> afficherDonViaUser(){
 		
-		return UtilisateurControl.utilisateurConnecte.getDons();
+		return ConnexionController.utilisateurConnecte.getDons();
 	}
 
 	public Don getDon() {

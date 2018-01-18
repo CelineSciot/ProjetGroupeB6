@@ -8,13 +8,13 @@ xmlns:b="http://bootsfaces.net/ui">
 <title>Faire un don</title>
 </h:head>
 <h:body>
-		<h:form>
-			<b:navBar brand="MSF" brandHref="index.xhtml" fluid="true">
+		
+			<b:navBar brand="MSF" brandHref="index.xhtml" fluid="true" onclick="#{connexionController.seConnecter()}">
 			  <b:navbarLinks>
 			    <b:navLink value="Faire un don" href="Don.xhtml"></b:navLink>
 			    <b:dropMenu value="Actions">
-			      <b:navLink value="Voir les evenements en cours" href="#{utilisateurControl.doNext()}"></b:navLink>
-			      <b:navLink value="Créer un événement" href="#{utilisateurControl.doAjoutEvent()}"></b:navLink>
+			      <b:navLink value="Voir les evenements en cours" href="ListeEvenements.xhtml"></b:navLink>
+			      <b:navLink value="Créer un événement" href="ActionAjout.xhtml"></b:navLink>
 			    </b:dropMenu>
 			    <b:navLink value="Nouvelles" href="#"></b:navLink>
 			    <b:navLink value="A propos" href="About.xhtml"></b:navLink>
@@ -24,7 +24,7 @@ xmlns:b="http://bootsfaces.net/ui">
 			    <b:navLink value="Connexion" href="Connection.xhtml"></b:navLink>
 			  </b:navbarLinks>
 			</b:navBar>
-		 </h:form>
+		 
 		 <h1>Faire un Don</h1>
 		 <h:form>
 			<h:panelGrid columns="2" class="table">

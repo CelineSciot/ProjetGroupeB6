@@ -38,9 +38,8 @@ version="3.1">
 			<web-resource-name>All Resources</web-resource-name>
 			<url-pattern>/GestionAction.xhtml</url-pattern>
 			<url-pattern>/GestionEvenement.xhtml</url-pattern>
-			<url-pattern>/SupressionEvenement.xhtml</url-pattern>
 			<url-pattern>/SupressionUtilisateur.xhtml</url-pattern>
-			<url-pattern>/Don.xhtml</url-pattern>
+			<url-pattern>/SupressionEvenement.xhtml</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
 			<role-name>role_admin</role-name>

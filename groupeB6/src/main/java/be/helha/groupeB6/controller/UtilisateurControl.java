@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 import be.helha.groupeB6.entities.Utilisateur;
@@ -20,6 +21,7 @@ public class UtilisateurControl {
 	
 	private Utilisateur utilisateur = new Utilisateur();
 	private List<Utilisateur> listeUsers;
+	
 	public static Utilisateur utilisateurConnecte;
 	
 	private String numTel;
@@ -41,7 +43,7 @@ public class UtilisateurControl {
 		return "ActionAjout.xhtml?faces-redirect=true";
 	}
 	
-public String doCreerCompte() {
+	public String doCreerCompte() {
 		
 		return "CreerCompte.xhtml?faces-redirect=true";
 	}
