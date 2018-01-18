@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 xmlns:f="http://java.sun.com/jsf/core"
 xmlns:h="http://java.sun.com/jsf/html"
-xmlns:jsf="http://xmlns.jcp.org/jsf">
+xmlns:jsf="http://xmlns.jcp.org/jsf"
+xmlns:b="http://bootsfaces.net/ui">
 	<h:head>
 		<title>Supprimer Evenement</title>
 		<link rel="stylesheet" href="FichierCSS.css" />
@@ -34,7 +35,8 @@ xmlns:jsf="http://xmlns.jcp.org/jsf">
 	
 	
 			<h:column>
-			      <h:commandButton class="delete" value="X"  action="#{evenementControl.SupprimerEvenement(evt)}"></h:commandButton>
+			    <!--  <h:commandButton class="delete" value="X"  action="#{evenementControl.SupprimerEvenement(evt)}"></h:commandButton>-->
+			   	<b:iconAwesome class="delete" name="camera-retro" action="#{evenementControl.SupprimerEvenement(evt)}"/><br/>
 			   </h:column>
 			   
 			</h:dataTable>
