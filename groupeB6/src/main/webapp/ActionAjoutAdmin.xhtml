@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:jsf="http://xmlns.jcp.org/jsf"
+xmlns:b="http://bootsfaces.net/ui"
+xmlns:my="http://java.sun.com/jsf/composite/my">
+<h:head>
+<title>Creer un nouvel événement</title>
+
+</h:head>
+
+<h:body>
+ 
+ 		<b:navBar brand="MSF" brandHref="index.xhtml" fluid="true" onclick="#{connexionController.seConnecter()}">
+			  <b:navbarLinks>
+			  <b:dropMenu value="Don">
+			        <b:navLink value="Faire un don" href="Don.xhtml"></b:navLink>
+			          <b:navLink value="Historique de mes dons" href="ListeDonUtilisateur.xhtml"></b:navLink>
+			    </b:dropMenu>
+			    <b:dropMenu value="Actions">
+			      <b:navLink value="Voir les evenements en cours" href="#{utilisateurControl.doNext()}"></b:navLink>
+			      <b:navLink value="Créer un événement" href="#{utilisateurControl.doAjoutEvent()}"></b:navLink>
+			    </b:dropMenu>
+			    
+			    <b:dropMenu value="Gestion Evenement">
+			      <b:navLink value="Gérer évenement" href="#{evenementControl.doGestion()}"></b:navLink>
+			      <b:navLink value="Supprimer des évènements" href="#{evenementControl.doSupression()}"></b:navLink>
+			      <b:navLink value="Ajouter des évènements" href="#{utilisateurControl.doAjoutEvent()}"></b:navLink>
+			    </b:dropMenu>
+
+			    <b:navLink value="A propos" href="About.xhtml"></b:navLink>
+			    <b:navLink value="Contact" href="Contact.xhtml"></b:navLink>
+			    
+			  </b:navbarLinks>
+			  <b:navbarLinks pull="right" styleClass="hidden-xs">
+			    <b:navLink value="Connexion" href="login.xhtml"></b:navLink>
+			  </b:navbarLinks>
+			</b:navBar>
+ 
+ 
+		<h1>Créer un nouvel événement</h1>
+		<b:form enctype="multipart/form-data">
+		  <b:carousel id="wizard" styleClass="wizardPseudoClass"
+		              style="width:600px; padding-top:20px"
+		              startAnimation="false"
+		              showIndicators="false"
+		              wrap="false">
+		    <b:carouselItem style="width:600px; height:450px">
+		      <b:panel title="Information" look="primary">
+		        <b:inputText value = "#{evenementControl.titre}" label="Titre de l'événement"/>
+		        <b:datepicker label="Date de l'événement" value = "#{evenementControl.dateA}"  mode="toggle-icon"/>
+		        <b:inputText value = "#{evenementControl.typeCollecte}" label="Collectif/individuel"/>
+		        <b:touchSpin id="spin1"  value="#{evenementControl.objectifFinancier}" label="Objectif" min="10" max="10000" step="100" prefix="€" />
+		        <b:inputText value = "#{evenementControl.lieu}" label="Lieu"/>
+		        <h:inputFile id="file" value="#{evenementControl.up.uploadedFile}" label="Image de l'événement"/>
+		      </b:panel>
+		    </b:carouselItem>
+		    <b:carouselItem style="width:600px;height:450px">
+		   		<b:panel title="Description de l'événement" look="primary">
+		     	 <b:inputTextarea value = "#{evenementControl.description}" label="Description de l'événement"/>
+		      </b:panel>
+		    </b:carouselItem>
+		    <b:carouselControl direction="left" >
+		      <b:button value="précédent"
+		                onclick="$('.wizardPseudoClass').carousel('prev');$('.wizardPseudoClass').carousel('pause');"
+		                look="info" />
+		    </b:carouselControl>
+		    <b:carouselControl direction="right">
+		      <b:button value="suivant" style="position:absolute;right:0px"
+		                onclick="$('.wizardPseudoClass').carousel('next');$('.wizardPseudoClass').carousel('pause');"
+		                look="success" />
+		    </b:carouselControl>
+		  </b:carousel>
+		  <b:commandButton name="bouton1" class="button" value = "Proposer l'événement" action="#{evenementControl.ajouterEvenement()}"></b:commandButton>
+    		<b:alert severity="info" title="Evenement ajouté"  rendered="bouton1.click()">L'évènement a bien été ajouté.</b:alert>
+		
+		
+		 
+		  
+		</b:form>
+		
+
+		
+		
+
+</h:body>
+</html>

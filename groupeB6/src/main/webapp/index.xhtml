@@ -37,5 +37,45 @@ xmlns:b="http://bootsfaces.net/ui">
 			    	
 			  </b:navbarLinks>
 			</b:navBar>
+			
+			
+		<h:form>
+			<h:dataTable value = "#{evenementControl.doUtil()}" var = "e"		
+			   			headerClass = "UserTableHeader"
+			   			rowClasses = "UserTableOddRow,UserTableEvenRow" style="width:100%;">
+			   			
+			   			<h:column>    				
+						     		 <b:row>
+									  <b:column col-sm="6" col-md="6" offset="3">
+									    <b:thumbnail>
+									      <img src="data:image/jpg;base64,#{e.images}" width="380"></img>
+									      <f:facet name="caption">
+									        <h3>#{e.titre}</h3> 
+									        <p>
+									       
+												<a id="atrigger" class="btn btn-primary" href="#amodal" data-toggle="modal">description</a>
+
+									        </p> 
+									        <p>#{e.dateA}</p>
+									        <p>#{e.lieu}</p>
+									      </f:facet>
+									    </b:thumbnail>
+									  </b:column> 
+									</b:row>
+																						     
+						 </h:column>
+						 
+			 </h:dataTable>
+	  		
+	  	</h:form>
+		
+
+		<b:modal id="amodal" title="Description" value = "#{evenementControl.doUtil()}" var = "e" styleClass="modalPseudoClass">
+			<p>#{e.description}</p>
+			<f:facet name="footer">
+				<b:button value="Close" dismiss="modal" />								   
+			 </f:facet>
+		</b:modal>
+			
 		</h:body>
 </html>

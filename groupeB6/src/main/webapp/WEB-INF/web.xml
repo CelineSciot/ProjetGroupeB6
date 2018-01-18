@@ -41,6 +41,7 @@ version="3.1">
 			<url-pattern>/SupressionUtilisateur.xhtml</url-pattern>
 			<url-pattern>/SupressionEvenement.xhtml</url-pattern>
 			<url-pattern>/ListeDonAdmin.xhtml</url-pattern>
+			<url-pattern>/ActionAjoutAdmin.xhtml</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
 			<role-name>role_admin</role-name>

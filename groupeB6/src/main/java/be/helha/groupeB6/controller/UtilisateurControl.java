@@ -42,6 +42,10 @@ public class UtilisateurControl {
 		
 		return "ActionAjout.xhtml?faces-redirect=true";
 	}
+	public String doAjoutEventAdmin() {
+		
+		return "ActionAjoutAdmin.xhtml?faces-redirect=true";
+	}
 	
 	public String doCreerCompte() {
 		
