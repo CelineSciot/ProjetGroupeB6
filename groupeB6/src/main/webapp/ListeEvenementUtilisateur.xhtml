@@ -9,15 +9,16 @@ xmlns:b="http://bootsfaces.net/ui">
 		
 	</h:head>
 <h:body>
-		
-		 <b:navBar brand="MSF" brandHref="index.xhtml" fluid="true" onclick="#{connexionController.seConnecter()}">
+	<b:container fluid="true">
+		  <b:row>
+		<b:navBar brand="MSF" brandHref="index.xhtml" fluid="true" onclick="#{connexionController.seConnecter()}">
 			  <b:navbarLinks>
 			  <b:dropMenu value="Don" rendered="#{connexionController.connect}">
 			        <b:navLink value="Faire un don" href="Don.xhtml"></b:navLink>
-			        <b:navLink value="Historique de mes dons" href="ListeDonUtilisateur.xhtml" rendered="#{connexionController.connect}"></b:navLink>
 			    </b:dropMenu>
 			    <b:dropMenu value="Actions">
 			      <b:navLink value="Voir les evenements en cours" href="#{utilisateurControl.doNext()}"></b:navLink>
+			      <b:navLink value="Voir mes événements" href="ListeEvenementUtilisateur.xhtml" rendered="#{connexionController.connect}"></b:navLink>
 			      <b:navLink value="Créer un événement" href="#{utilisateurControl.doAjoutEvent()}"></b:navLink>
 			    </b:dropMenu>
 
@@ -26,46 +27,43 @@ xmlns:b="http://bootsfaces.net/ui">
 			  </b:navbarLinks>
 			  <b:navbarLinks pull="right" styleClass="hidden-xs">
 			    <h:form>
-			    	<h:commandButton value="Connexion" action="#{connexionController.doConnect()}" rendered="#{!connexionController.connect}" ></h:commandButton>
-			    	<h:commandButton value="Deconnexion" action="#{connexionController.logout()}" rendered="#{connexionController.connect}" ></h:commandButton>
-			    	<h:commandButton value="Adminnistration" action="#{connexionController.doAdmin()}"></h:commandButton>	
+			    	<b:commandButton value="Connexion" class="btn-primary" action="#{connexionController.doConnect()}" rendered="#{!connexionController.connect}" ></b:commandButton>
+			    	<b:commandButton value="Deconnexion" class="btn-danger" action="#{connexionController.logout()}" rendered="#{connexionController.connect}" ></b:commandButton>
+			    	<b:commandButton value="Adminnistration" class="btn-warning" action="#{connexionController.doAdmin()}" rendered="#{!connexionController.connect}"></b:commandButton>	
 			    </h:form>
 			    	
 			  </b:navbarLinks>
 			</b:navBar>
-
-		<h:form>
-			<h:dataTable value = "#{evenementControl.afficherEvenementUser()}" var = "e"		
-			   			headerClass = "UserTableHeader"
-			   			rowClasses = "UserTableOddRow,UserTableEvenRow" style="width:100%;">
-			   			
-			   			<h:column>    				
-						      <f:facet name = "header">Image</f:facet>    				
-						     <img src="data:image/jpg;base64,#{e.images}" width="380"></img>
-						 </h:column>
-						 
-			   			 <h:column>    				
-						      <f:facet name = "header">Titre</f:facet>    				
-						     #{e.titre}
-						 </h:column>
-						 
-						  <h:column>    				
-						      <f:facet name = "header">Date</f:facet>    				
-						     #{e.dateA}
-						 </h:column>
-						  
-						 <h:column>    				
-						      <f:facet name = "header">Lieu</f:facet>    				
-						     #{e.lieu}
-						 </h:column> 
-						 
-						 <h:column>    				
-						      <f:facet name = "header">Description</f:facet>    				
-						     #{e.description}
-						 </h:column> 
-						 
-			 </h:dataTable>
-	  		
-	  	</h:form>
+		  </b:row>
+		  <b:row>
+		    <b:column medium-screen="2">
+		     <h1>Evenements</h1>
+		    </b:column>
+		    <b:column medium-screen="8">
+		     <h:form>
+		  <b:dataTable value="#{evenementControl.afficherEvenementUser()}"
+		               var="evt"
+		               excel="true"
+		               csv="true"
+		               pdf="true"
+		               copy="true"
+		               print="true"
+		               row-style-class="#{car.enginePower>100?'light-power':'light'}, #{car.enginePower>100?'dark-power':'dark'} ">
+		    <b:dataTableColumn value="#{evt.titre}">
+		    	<br />
+		    	<br />
+			    <img src="data:image/jpg;base64,#{evt.images}" width="50%"></img>
+			    <b:commandButton iconAwesome="fa-plus-square" class="btn-info" value="En savoir plus" action="#{evenementControl.doDetails(evt)}"></b:commandButton>
+		    </b:dataTableColumn>
+		    <b:dataTableColumn value="#{evt.dateA}" ></b:dataTableColumn>
+		    <b:dataTableColumn value="#{evt.lieu}" ></b:dataTableColumn>
+		  </b:dataTable>
+		</h:form>
+		    </b:column>
+		    <b:column medium-screen="2">
+		    </b:column>
+		  </b:row>
+		 
+		</b:container>
 </h:body>
 </html>

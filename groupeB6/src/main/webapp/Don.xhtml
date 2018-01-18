@@ -8,15 +8,17 @@ xmlns:b="http://bootsfaces.net/ui">
 <title>Faire un don</title>
 </h:head>
 <h:body>
-		
-			<b:navBar brand="MSF" brandHref="index.xhtml" fluid="true" onclick="#{connexionController.seConnecter()}">
+
+<b:container fluid="true">
+		  <b:row>
+		    <b:navBar brand="MSF" brandHref="index.xhtml" fluid="true" onclick="#{connexionController.seConnecter()}">
 			  <b:navbarLinks>
 			  <b:dropMenu value="Don" rendered="#{connexionController.connect}">
 			        <b:navLink value="Faire un don" href="Don.xhtml"></b:navLink>
-			        <b:navLink value="Historique de mes dons" href="ListeDonUtilisateur.xhtml" rendered="#{connexionController.connect}"></b:navLink>
 			    </b:dropMenu>
 			    <b:dropMenu value="Actions">
 			      <b:navLink value="Voir les evenements en cours" href="#{utilisateurControl.doNext()}"></b:navLink>
+			      <b:navLink value="Voir mes événements" href="ListeEvenementUtilisateur.xhtml" rendered="#{connexionController.connect}"></b:navLink>
 			      <b:navLink value="Créer un événement" href="#{utilisateurControl.doAjoutEvent()}"></b:navLink>
 			    </b:dropMenu>
 
@@ -25,57 +27,49 @@ xmlns:b="http://bootsfaces.net/ui">
 			  </b:navbarLinks>
 			  <b:navbarLinks pull="right" styleClass="hidden-xs">
 			    <h:form>
-			    	<h:commandButton value="Connexion" action="#{connexionController.doConnect()}" rendered="#{!connexionController.connect}" ></h:commandButton>
-			    	<h:commandButton value="Deconnexion" action="#{connexionController.logout()}" rendered="#{connexionController.connect}" ></h:commandButton>
-			    	<h:commandButton value="Adminnistration" action="#{connexionController.doAdmin()}"></h:commandButton>	
+			    	<b:commandButton value="Connexion" class="btn-primary" action="#{connexionController.doConnect()}" rendered="#{!connexionController.connect}" ></b:commandButton>
+			    	<b:commandButton value="Deconnexion" class="btn-danger" action="#{connexionController.logout()}" rendered="#{connexionController.connect}" ></b:commandButton>
+			    	<b:commandButton value="Adminnistration" class="btn-warning" action="#{connexionController.doAdmin()}" rendered="#{!connexionController.connect}"></b:commandButton>	
 			    </h:form>
 			    	
 			  </b:navbarLinks>
 			</b:navBar>
+		  </b:row>
+		  <b:row>
+		    <b:column medium-screen="5">
+		        <h:form>
+					<h:panelGrid columns="2" class="table">
+						
+					    <h:outputText value="Montant:" />
+					    <b:inputText value = "#{donControl.montant}"/>
+			   			 <b:commandButton value = "Faire la donnation" action="#{donControl.ajouterDon()}" ></b:commandButton>
+					</h:panelGrid>
+	  			</h:form>
+		    </b:column>
+		    <b:column medium-screen="7">
+		     <h:form>
+			  <b:dataTable value="#{donControl.afficherDonViaUser()}" var="don"
+			               excel="true"
+			               csv="true"
+			               pdf="true"
+			               copy="true"
+			               print="true"
+			               row-style-class="#{car.enginePower>100?'light-power':'light'}, #{car.enginePower>100?'dark-power':'dark'} ">
+			    <b:dataTableColumn value="#{don.montant}" />
+			  </b:dataTable>
+			</h:form>
+		    </b:column>
+		    <b:column medium-screen="4">
+		    </b:column>
+		  </b:row>
 		 
-		 <h1>Faire un Don</h1>
-		 <h:form>
-			<h:panelGrid columns="2" class="table">
-				
-			    <h:outputText value="Montant:" />
-			    <h:inputText value = "#{donControl.montant}"/>
-			 
-			 
-			    
-	   			 <h:commandButton value = "Faire la donnation" action="#{donControl.ajouterDon()}" ></h:commandButton>
-			</h:panelGrid>
-	  		
-	  	</h:form>
+		</b:container>
+		
 		 
-		 <h:form>
-			<h:dataTable value = "#{donControl.doDon()}" var = "evt"		
-			   			headerClass = "UserTableHeader"
-			   			rowClasses = "UserTableOddRow,UserTableEvenRow" style="width:100%;">
-			   			<h:column>
-			   			
-			   			<div class="panel-group" style="width:80%;text-align:center;margin-left:10%;">
-			    			<div class="panel panel-default">
-			      				<div class="panel-heading"><h:commandLink value="#{evt.montant}"></h:commandLink></div>
-			      				<div class="panel-body">
-			     
-			      				</div>
-			    			</div>
-			    		</div>
-			    </h:column>
-			 </h:dataTable>
-	  		
-	  	</h:form>
-	  	<h:form>
-		  <b:dataTable value="#{donControl.doDon()}"
-		               var="don"
-		               excel="true"
-		               csv="true"
-		               pdf="true"
-		               copy="true"
-		               print="true"
-		               row-style-class="#{car.enginePower>100?'light-power':'light'}, #{car.enginePower>100?'dark-power':'dark'} ">
-		    <b:dataTableColumn value="#{don.montant}" />
-		  </b:dataTable>
-		</h:form>
+		
+		
+		 
+		
+	  	
 </h:body>
 </html>

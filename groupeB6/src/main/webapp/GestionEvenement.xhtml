@@ -9,8 +9,9 @@ xmlns:b="http://bootsfaces.net/ui">
 		
 	</h:head>
 <h:body>
-		
-		 <b:navBar brand="MSF" brandHref="index.xhtml" fluid="true" onclick="#{connexionController.seConnecter()}">
+		<b:container fluid="true">
+		  <b:row>
+		   <b:navBar brand="MSF" brandHref="index.xhtml" fluid="true" onclick="#{connexionController.seConnecter()}">
 			  <b:navbarLinks>
 			    <b:dropMenu value="Gestion Evenement" rendered="#{connexionController.connect}">
 			      <b:navLink value="Gérer évenement" href="#{evenementControl.doGestion()}" ></b:navLink>
@@ -18,22 +19,30 @@ xmlns:b="http://bootsfaces.net/ui">
 			      <b:navLink value="Ajouter des évènements" href="#{utilisateurControl.doAjoutEventAdmin()}"></b:navLink>
 			    </b:dropMenu>  
 			  </b:navbarLinks>
+			  <b:navbarLinks>
+			    <b:dropMenu value="Autres" rendered="#{connexionController.connect}">
+			      <b:navLink value="Liste Don" href="ListeDonAdmin.xhtml" ></b:navLink>
+			    </b:dropMenu>  
+			  </b:navbarLinks>
 			  <b:navbarLinks pull="right" styleClass="hidden-xs">
 			    <h:form>
-			    	<h:commandButton value="Connexion" action="#{connexionController.doConnect()}" rendered="#{!connexionController.connect}" ></h:commandButton>
-			    	<h:commandButton value="Deconnexion" action="#{connexionController.logout()}" rendered="#{connexionController.connect}" ></h:commandButton>
+			    	<b:commandButton value="Connexion" class="btn-primary" action="#{connexionController.doConnect()}" rendered="#{!connexionController.connect}" ></b:commandButton>
+			    	<b:commandButton value="Deconnexion" class="btn-danger" action="#{connexionController.logout()}" rendered="#{connexionController.connect}" ></b:commandButton>
 			    	
 			    </h:form>
 			  </b:navbarLinks>
 			</b:navBar>
-
-		<h:form>
-		<h:commandButton  class="button" value="Afficher les évènements en traitement" action="#{evenementControl.afficherEvenementViaApprobation(false)}"></h:commandButton>
-		<h:commandButton  class="button" value="Afficher les évènements approuvés" action="#{evenementControl.afficherEvenementViaApprobation(true)}"></h:commandButton>
-		</h:form>
-		
-		<h:form>
-			<h:dataTable value = "#{evenementControl.listeVoulue}" var = "evt"		
+		  </b:row>
+		  <b:row>
+		    <b:column medium-screen="3">
+		    <h:form>
+				<b:commandButton  class="form-control" value="Evènements en attente" action="#{evenementControl.afficherEvenementViaApprobation(false)}"></b:commandButton>
+				<b:commandButton  class="form-control" value="Evènements approuvés" action="#{evenementControl.afficherEvenementViaApprobation(true)}"></b:commandButton>
+			</h:form>
+		    </b:column>
+		    <b:column medium-screen="9">
+		      <h:form>
+				<h:dataTable value = "#{evenementControl.listeVoulue}" var = "evt"		
 			   			headerClass = "UserTableHeader"
 			   			rowClasses = "UserTableOddRow,UserTableEvenRow" style="width:100%;">
 			   			<h:column>
@@ -50,14 +59,23 @@ xmlns:b="http://bootsfaces.net/ui">
 									       
 									</div>
 									<div class="panel-footer">
-										<h:commandButton  class="button" value="Approuver" action="#{evenementControl.approuveEvenement(evt)}"></h:commandButton>
-									    <h:commandButton  class="button" value="Supprimer" action="#{evenementControl.supprimerEvenementAdmin(evt)}"></h:commandButton>
+										<b:commandButton  class="btn-success" value="Approuver" action="#{evenementControl.approuveEvenement(evt)}"></b:commandButton>
+									    <b:commandButton  class="btn-danger" value="Supprimer" action="#{evenementControl.supprimerEvenementAdmin(evt)}"></b:commandButton>
 									</div>
 				    			</div>
 				    		</div>
 			    		</h:column>
 			  
 			 </h:dataTable>
-	  	</h:form>
+	  		</h:form>
+		    </b:column>
+		  </b:row>
+		 
+		</b:container>
+		 
+
+		
+		
+		
 </h:body>
 </html>

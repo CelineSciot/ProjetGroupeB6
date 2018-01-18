@@ -10,15 +10,16 @@ xmlns:b="http://bootsfaces.net/ui">
 	</h:head>
 <body>
 
-
-		 <b:navBar brand="MSF" brandHref="index.xhtml" fluid="true" onclick="#{connexionController.seConnecter()}">
+		<b:container fluid="true">
+		  <b:row>
+		    <b:navBar brand="MSF" brandHref="index.xhtml" fluid="true" onclick="#{connexionController.seConnecter()}">
 			  <b:navbarLinks>
 			  <b:dropMenu value="Don" rendered="#{connexionController.connect}">
 			        <b:navLink value="Faire un don" href="Don.xhtml"></b:navLink>
-			        <b:navLink value="Historique de mes dons" href="ListeDonUtilisateur.xhtml" rendered="#{connexionController.connect}"></b:navLink>
 			    </b:dropMenu>
 			    <b:dropMenu value="Actions">
 			      <b:navLink value="Voir les evenements en cours" href="#{utilisateurControl.doNext()}"></b:navLink>
+			      <b:navLink value="Voir mes événements" href="ListeEvenementUtilisateur.xhtml" rendered="#{connexionController.connect}"></b:navLink>
 			      <b:navLink value="Créer un événement" href="#{utilisateurControl.doAjoutEvent()}"></b:navLink>
 			    </b:dropMenu>
 
@@ -27,41 +28,67 @@ xmlns:b="http://bootsfaces.net/ui">
 			  </b:navbarLinks>
 			  <b:navbarLinks pull="right" styleClass="hidden-xs">
 			    <h:form>
-			    	<h:commandButton value="Connexion" action="#{connexionController.doConnect()}" rendered="#{!connexionController.connect}" ></h:commandButton>
-			    	<h:commandButton value="Deconnexion" action="#{connexionController.logout()}" rendered="#{connexionController.connect}" ></h:commandButton>
-			    	<h:commandButton value="Adminnistration" action="#{connexionController.doAdmin()}"></h:commandButton>	
+			    	<b:commandButton value="Connexion" class="btn-primary" action="#{connexionController.doConnect()}" rendered="#{!connexionController.connect}" ></b:commandButton>
+			    	<b:commandButton value="Deconnexion" class="btn-danger" action="#{connexionController.logout()}" rendered="#{connexionController.connect}" ></b:commandButton>
+			    	<b:commandButton value="Adminnistration" class="btn-warning" action="#{connexionController.doAdmin()}" rendered="#{!connexionController.connect}"></b:commandButton>	
 			    </h:form>
 			    	
 			  </b:navbarLinks>
 			</b:navBar>
-		
-
-		<h:form>
-			<h:dataTable value = "#{evenementControl.getEvenement()}" var = "evt"		
-			   			headerClass = "UserTableHeader"
-			   			rowClasses = "UserTableOddRow,UserTableEvenRow">
-			 
-			 <h:column>
-			 
-			 
+		  </b:row>
 			
-			
-			<h:panelGrid columns="1">
-			    <h1><h:outputText value="#{evt.titre}" /></h1>
-			    
-			    <f:facet name="header">
-			        <img src="data:image/jpg;base64,#{evt.images}" width="380"></img>
-			    </f:facet>
-
-			    <h:outputText value="#{evt.description}"/>
-			 	<h:outputText value="#{evt.dateA}"/>
-			    <h:outputText value="#{evt.typeCollecte}" />
-			    <h:outputText value="#{evt.objectifFinancier}" />
-
-			</h:panelGrid>
-		</h:column>
-		</h:dataTable>
-		</h:form>
-			
+		 	<b:row>
+		 	<b:column medium-screen="3">
+		 		<h:form>
+					<h:dataTable value = "#{evenementControl.getEvenement()}" var = "evt"		
+					   			headerClass = "UserTableHeader"
+					   			rowClasses = "UserTableOddRow,UserTableEvenRow">
+					 
+					 	<h:column>
+							<h:panelGrid columns="1">
+							   <h1>Type de collecte :</h1>
+							   <h1>Collecte #{evt.typeCollecte}</h1>
+							</h:panelGrid>
+						</h:column>
+					</h:dataTable>
+				</h:form>
+		 	</b:column>
+		 	<b:column medium-screen="5">
+		 		<h:form>
+					<h:dataTable value = "#{evenementControl.getEvenement()}" var = "evt"		
+					   			headerClass = "UserTableHeader"
+					   			rowClasses = "UserTableOddRow,UserTableEvenRow">
+					 
+					 	<h:column>
+							<h:panelGrid columns="1">
+							    
+							    <f:facet name="header">
+							        <img src="data:image/jpg;base64,#{evt.images}" width="100%" height="360"></img>
+							    </f:facet>
+							    <h1>#{evt.titre} -- #{evt.dateA}</h1>
+								<h1>Description de l'événement :</h1>
+							    <h:outputText value="#{evt.description}"/>
+							</h:panelGrid>
+						</h:column>
+					</h:dataTable>
+				</h:form>
+		 	</b:column>
+		 	<b:column medium-screen="4">
+		 		<h:form>
+					<h:dataTable value = "#{evenementControl.getEvenement()}" var = "evt"		
+					   			headerClass = "UserTableHeader"
+					   			rowClasses = "UserTableOddRow,UserTableEvenRow">
+					 
+					 	<h:column>
+							<h:panelGrid columns="1">
+							   <h1>Objectif financier de l'événement :</h1>
+							   <h1>#{evt.objectifFinancier} €</h1>
+							</h:panelGrid>
+						</h:column>
+					</h:dataTable>
+				</h:form>
+		 	</b:column>
+		 	</b:row>
+		</b:container>
 </body>
 </html>

@@ -17,10 +17,15 @@ xmlns:b="http://bootsfaces.net/ui">
 			      <b:navLink value="Ajouter des évènements" href="#{utilisateurControl.doAjoutEventAdmin()}"></b:navLink>
 			    </b:dropMenu>  
 			  </b:navbarLinks>
+			  <b:navbarLinks>
+			    <b:dropMenu value="Autres" rendered="#{connexionController.connect}">
+			      <b:navLink value="Liste Don" href="ListeDonAdmin.xhtml" ></b:navLink>
+			    </b:dropMenu>  
+			  </b:navbarLinks>
 			  <b:navbarLinks pull="right" styleClass="hidden-xs">
 			    <h:form>
-			    	<h:commandButton value="Connexion" action="#{connexionController.doConnect()}" rendered="#{!connexionController.connect}" ></h:commandButton>
-			    	<h:commandButton value="Deconnexion" action="#{connexionController.logout()}" rendered="#{connexionController.connect}" ></h:commandButton>
+			    	<b:commandButton value="Connexion" class="btn-primary" action="#{connexionController.doConnect()}" rendered="#{!connexionController.connect}" ></b:commandButton>
+			    	<b:commandButton value="Deconnexion" class="btn-danger" action="#{connexionController.logout()}" rendered="#{connexionController.connect}" ></b:commandButton>
 			    	
 			    </h:form>
 			  </b:navbarLinks>

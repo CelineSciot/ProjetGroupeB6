@@ -9,7 +9,10 @@ xmlns:b="http://bootsfaces.net/ui">
 		<link rel="stylesheet" href="FichierCSS.css" />
 	</h:head>
 <body>
-		<b:navBar brand="MSF" brandHref="index.xhtml" fluid="true" onclick="#{connexionController.seConnecter()}">
+
+<b:container fluid="true">
+		  <b:row>
+		   <b:navBar brand="MSF" brandHref="index.xhtml" fluid="true" onclick="#{connexionController.seConnecter()}">
 			  <b:navbarLinks>
 			    <b:dropMenu value="Gestion Evenement" rendered="#{connexionController.connect}">
 			      <b:navLink value="Gérer évenement" href="#{evenementControl.doGestion()}" ></b:navLink>
@@ -17,22 +20,42 @@ xmlns:b="http://bootsfaces.net/ui">
 			      <b:navLink value="Ajouter des évènements" href="#{utilisateurControl.doAjoutEventAdmin()}"></b:navLink>
 			    </b:dropMenu>  
 			  </b:navbarLinks>
+			  <b:navbarLinks>
+			    <b:dropMenu value="Autres" rendered="#{connexionController.connect}">
+			      <b:navLink value="Liste Don" href="ListeDonAdmin.xhtml" ></b:navLink>
+			    </b:dropMenu>  
+			  </b:navbarLinks>
 			  <b:navbarLinks pull="right" styleClass="hidden-xs">
 			    <h:form>
-			    	<h:commandButton value="Connexion" action="#{connexionController.doConnect()}" rendered="#{!connexionController.connect}" ></h:commandButton>
-			    	<h:commandButton value="Deconnexion" action="#{connexionController.logout()}" rendered="#{connexionController.connect}" ></h:commandButton>
+			    	<b:commandButton value="Connexion" class="btn-primary" action="#{connexionController.doConnect()}" rendered="#{!connexionController.connect}" ></b:commandButton>
+			    	<b:commandButton value="Deconnexion" class="btn-danger" action="#{connexionController.logout()}" rendered="#{connexionController.connect}" ></b:commandButton>
 			    	
 			    </h:form>
 			  </b:navbarLinks>
 			</b:navBar>
+		  </b:row>
+		  <b:row>
+		    <b:column medium-screen="2">
+		      <h1>Suppression Utilisateur</h1>
+		    </b:column>
+		    <b:column medium-screen="10">
+		    
+		    
+		    
+		    
+		      <h:form>
 
-		<h:form>
-			<h:dataTable value = "#{utilisateurControl.doUtil()}" var = "u"		
-			   			headerClass = "UserTableHeader"
-			   			rowClasses = "UserTableOddRow,UserTableEvenRow">
-			 
-
-			  	<h:column>    				
+			
+			<b:dataTable value="#{utilisateurControl.doUtil()}"
+		               var="evt"
+		               excel="true"
+		               csv="true"
+		               pdf="true"
+		               copy="true"
+		               print="true"
+		               row-style-class="#{car.enginePower>100?'light-power':'light'}, #{car.enginePower>100?'dark-power':'dark'} ">
+		   
+		    <h:column>    				
 			      <f:facet name = "header">Nom</f:facet>    				
 			     #{u.nom}
 			    </h:column> 
@@ -63,18 +86,16 @@ xmlns:b="http://bootsfaces.net/ui">
 			    </h:column>  
 		
 			   <h:column>
-			      <h:commandButton class="delete" value="X"  action="#{utilisateurControl.supprimerUtilisateur(u)}"></h:commandButton>
+			      <b:commandButton class="btn-danger" value="X"  action="#{utilisateurControl.supprimerUtilisateur(u)}"></b:commandButton>
 			   </h:column>
-			   
-			</h:dataTable>
-			
-			
+		  </b:dataTable>
 			
 	
 		</h:form>
-		
-		
-		
-
+		    </b:column>
+		   
+		  </b:row>
+		 
+		</b:container>
 </body>
 </html>

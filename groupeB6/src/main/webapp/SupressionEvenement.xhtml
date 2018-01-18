@@ -9,7 +9,10 @@ xmlns:b="http://bootsfaces.net/ui">
 		<link rel="stylesheet" href="FichierCSS.css" />
 	</h:head>
 <body>
-		<b:navBar brand="MSF" brandHref="index.xhtml" fluid="true" onclick="#{connexionController.seConnecter()}">
+	
+	<b:container fluid="true">
+		  <b:row>
+		   <b:navBar brand="MSF" brandHref="index.xhtml" fluid="true" onclick="#{connexionController.seConnecter()}">
 			  <b:navbarLinks>
 			    <b:dropMenu value="Gestion Evenement" rendered="#{connexionController.connect}">
 			      <b:navLink value="Gérer évenement" href="#{evenementControl.doGestion()}" ></b:navLink>
@@ -17,48 +20,66 @@ xmlns:b="http://bootsfaces.net/ui">
 			      <b:navLink value="Ajouter des évènements" href="#{utilisateurControl.doAjoutEventAdmin()}"></b:navLink>
 			    </b:dropMenu>  
 			  </b:navbarLinks>
+			  <b:navbarLinks>
+			    <b:dropMenu value="Autres" rendered="#{connexionController.connect}">
+			      <b:navLink value="Liste Don" href="ListeDonAdmin.xhtml" ></b:navLink>
+			    </b:dropMenu>  
+			  </b:navbarLinks>
 			  <b:navbarLinks pull="right" styleClass="hidden-xs">
 			    <h:form>
-			    	<h:commandButton value="Connexion" action="#{connexionController.doConnect()}" rendered="#{!connexionController.connect}" ></h:commandButton>
-			    	<h:commandButton value="Deconnexion" action="#{connexionController.logout()}" rendered="#{connexionController.connect}" ></h:commandButton>
+			    	<b:commandButton value="Connexion" class="btn-primary" action="#{connexionController.doConnect()}" rendered="#{!connexionController.connect}" ></b:commandButton>
+			    	<b:commandButton value="Deconnexion" class="btn-danger" action="#{connexionController.logout()}" rendered="#{connexionController.connect}" ></b:commandButton>
 			    	
 			    </h:form>
 			  </b:navbarLinks>
 			</b:navBar>
+		  </b:row>
+		  <b:row>
+		    <b:column medium-screen="2">
+		      <h1>Suppression événement</h1>
+		    </b:column>
+		    <b:column medium-screen="10">
+		    
+		    
+		    
+		    
+		      <h:form>
 
-		<h:form>
-			<h:dataTable value = "#{evenementControl.doUtil()}" var = "evt"		
-			   			headerClass = "UserTableHeader"
-			   			rowClasses = "UserTableOddRow,UserTableEvenRow">
-			 
-			 <!--  <h:column>
 			
-			 	<f:facet name="header">Image </f:facet>
-			    <h:graphicImage name="demo/images/misc/kobe.png" />
-			 </h:column>-->
-			  	 <h:column>    				
+			<b:dataTable value="#{evenementControl.doUtil()}"
+		               var="evt"
+		               excel="true"
+		               csv="true"
+		               pdf="true"
+		               copy="true"
+		               print="true"
+		               row-style-class="#{car.enginePower>100?'light-power':'light'}, #{car.enginePower>100?'dark-power':'dark'} ">
+		   
+		    <h:column>    				
 			      <f:facet name = "header">date</f:facet>    				
 			     #{evt.dateA}
-			   </h:column>  
-	
-			   
-			   <h:column>    				
+			   </h:column>
+		     <h:column>    				
 			      <f:facet name = "header">titre</f:facet>    				
 			    
 			      #{evt.titre}
-			   </h:column> 
-	
-	
-				<h:column>
-			      <h:commandButton class="delete" value="X"  action="#{evenementControl.SupprimerEvenement(evt)}"></h:commandButton>			  
 			   </h:column>
-			   
-			</h:dataTable>
-			
-			
+			   <h:column>
+			   <f:facet name = "header">Supprimer</f:facet>   
+			      <b:commandButton class="btn-danger" value="X"  action="#{evenementControl.SupprimerEvenement(evt)}"></b:commandButton>			  
+			   </h:column> 
+		  </b:dataTable>
 			
 	
 		</h:form>
+		    </b:column>
+		   
+		  </b:row>
+		 
+		</b:container>
+		
+
+		
 		
 		
 		

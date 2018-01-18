@@ -18,10 +18,10 @@ xmlns:b="http://bootsfaces.net/ui">
 			  <b:navbarLinks>
 			  <b:dropMenu value="Don" rendered="#{connexionController.connect}">
 			        <b:navLink value="Faire un don" href="Don.xhtml"></b:navLink>
-			        <b:navLink value="Historique de mes dons" href="ListeDonUtilisateur.xhtml" rendered="#{connexionController.connect}"></b:navLink>
 			    </b:dropMenu>
 			    <b:dropMenu value="Actions">
 			      <b:navLink value="Voir les evenements en cours" href="#{utilisateurControl.doNext()}"></b:navLink>
+			      <b:navLink value="Voir mes événements" href="ListeEvenementUtilisateur.xhtml" rendered="#{connexionController.connect}"></b:navLink>
 			      <b:navLink value="Créer un événement" href="#{utilisateurControl.doAjoutEvent()}"></b:navLink>
 			    </b:dropMenu>
 
@@ -30,9 +30,9 @@ xmlns:b="http://bootsfaces.net/ui">
 			  </b:navbarLinks>
 			  <b:navbarLinks pull="right" styleClass="hidden-xs">
 			    <h:form>
-			    	<h:commandButton value="Connexion" action="#{connexionController.doConnect()}" rendered="#{!connexionController.connect}" ></h:commandButton>
-			    	<h:commandButton value="Deconnexion" action="#{connexionController.logout()}" rendered="#{connexionController.connect}" ></h:commandButton>
-			    	<h:commandButton value="Adminnistration" action="#{connexionController.doAdmin()}"></h:commandButton>	
+			    	<b:commandButton value="Connexion" class="btn-primary" action="#{connexionController.doConnect()}" rendered="#{!connexionController.connect}" ></b:commandButton>
+			    	<b:commandButton value="Deconnexion" class="btn-danger" action="#{connexionController.logout()}" rendered="#{connexionController.connect}" ></b:commandButton>
+			    	<b:commandButton value="Adminnistration" class="btn-warning" action="#{connexionController.doAdmin()}" rendered="#{!connexionController.connect}"></b:commandButton>	
 			    </h:form>
 			    	
 			  </b:navbarLinks>
@@ -63,12 +63,6 @@ xmlns:b="http://bootsfaces.net/ui">
 					 	<b:inputText value = "#{utilisateurControl.numTel}" label="Téléphone/GSM"/>
 						<b:inputText value = "#{utilisateurControl.nationalite}" label="Nationalité"/>
 					    <b:datepicker label="Date de Naissance" value = "#{utilisateurControl.dateNaissance}"  mode="toggle-icon"/>
-				      </b:panel>
-				    </b:carouselItem>
-				    <b:carouselItem style="width:400px;height:230px">
-				      <b:panel title="Adresse" look="success">
-				        <b:inputText label="Zip code"  />
-				        <b:inputText label="City"  />
 				      </b:panel>
 				    </b:carouselItem>
 				    <b:carouselControl direction="right" >
