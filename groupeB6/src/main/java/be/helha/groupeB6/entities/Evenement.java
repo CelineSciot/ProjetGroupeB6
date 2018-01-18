@@ -115,6 +115,16 @@ public class Evenement implements Serializable{
 		this.utilisateur = utilisateur;
 	}
 
+	public String getLieu() {
+		return lieu;
+	}
+
+	public void setLieu(String lieu) {
+		this.lieu = lieu;
+	}
+	
+	
+
 	
 	
 	
