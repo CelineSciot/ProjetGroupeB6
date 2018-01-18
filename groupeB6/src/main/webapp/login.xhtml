@@ -10,7 +10,11 @@ xmlns:b="http://bootsfaces.net/ui">
 <h:body>
 
 		
-			<b:navBar brand="MSF" brandHref="index.xhtml" fluid="true" onclick="#{connexionController.seConnecter()}">
+			
+		
+			   <b:container fluid="true">
+		  <b:row>
+		    <b:navBar brand="MSF" brandHref="index.xhtml" fluid="true" onclick="#{connexionController.seConnecter()}">
 			  <b:navbarLinks>
 			  <b:dropMenu value="Don" rendered="#{connexionController.connect}">
 			        <b:navLink value="Faire un don" href="Don.xhtml"></b:navLink>
@@ -33,50 +37,47 @@ xmlns:b="http://bootsfaces.net/ui">
 			    	
 			  </b:navbarLinks>
 			</b:navBar>
-		
-			   
-			<h:form id="login" onsubmit="document.getElementById('login').action='j_security_check';" prependId="false">
-			   	<h:panelGrid columns="2">
-			   			<h:outputText value="username"></h:outputText>
-			   			<h:inputText id="j_username" name="j_username" value="#{connexionController.j_username}"></h:inputText>
-			   			<h:outputText value="password"></h:outputText>
-			   			<h:inputText id="j_password" name="j_password" value="#{connexionController.j_password}"></h:inputText>
-			   		</h:panelGrid>
-			   		
-			   		<h:commandButton value="Login"></h:commandButton>
-			   </h:form>
-			   
-			   
-			   
-			   
-			   
-
-
-		    	<!-- <h:form>
+		  </b:row>
+		  <b:row>
+		    <b:column medium-screen="4">
+		      <h1>Connexion</h1>
+		    </b:column>
+		    <b:column medium-screen="4">
+		      <h:form id="login" onsubmit="document.getElementById('login').action='j_security_check';" prependId="false">
 			    	<h:panelGrid columns="2">
 						<h:panelGroup>Login :</h:panelGroup>
-						<h:panelGroup>
-						<div class="input-group">
-						<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-						 <h:inputText class="form-control" name="email" placeholder="Email" value = "#{connexionController.j_username}"/>
-						</div>
-						</h:panelGroup>
+							<h:panelGroup>
+							<div class="input-group">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+							 <h:inputText class="form-control" id="j_username" name="j_username" ></h:inputText>
+							</div>
+							</h:panelGroup>
 						
 
 						
 						<h:panelGroup>Mot de passe :</h:panelGroup>
-						<h:panelGroup>
-						<div class="input-group">
-						<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-						<h:inputSecret class="form-control" name="password" placeholder="Password" value = "#{connexionController.j_password}"/>
-						</div>
+							<h:panelGroup>
+							<div class="input-group">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+							<h:inputSecret class="form-control" id="j_password" name="j_password"></h:inputSecret>
+							</div>
 						</h:panelGroup>
 						
 					</h:panelGrid>	
 				
 			 		
-					<b:commandButton value="Connection" class="form-control" action="#{connexionController.seConnecter()}"></b:commandButton>
-					<b:commandButton value="S'enregistrer" class="form-control" action="#{utilisateurControl.doCreerCompte()}"></b:commandButton>
-			   </h:form> -->
+					<b:commandButton value="Login" class="form-control"></b:commandButton>
+			   </h:form>
+			   <h:form>
+			   	<b:commandButton value="S'enregistrer" class="form-control" action="#{utilisateurControl.doCreerCompte()}"></b:commandButton>
+			  	</h:form>
+		    </b:column>
+		    <b:column medium-screen="4">
+		      
+		    </b:column>
+		  </b:row>
+		 
+		</b:container>
+			
 </h:body>
 </html>

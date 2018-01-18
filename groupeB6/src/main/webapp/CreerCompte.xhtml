@@ -48,7 +48,7 @@ xmlns:b="http://bootsfaces.net/ui">
 				              style="width:400px; padding-top:20px"
 				              startAnimation="false"
 				              showIndicators="false"
-				              wrap="false">
+				              wrap="false" >
 				    <b:carouselItem style="width:400px; height:230px">
 				      <b:panel title="Identification" look="primary">
 				        <b:inputText value = "#{utilisateurControl.mail}" label="Adresse email"/>
@@ -82,7 +82,7 @@ xmlns:b="http://bootsfaces.net/ui">
 				                look="success" />
 				    </b:carouselControl>
 				  </b:carousel>
-				  <b:commandButton value = "S'inscrire" action="#{utilisateurControl.ajouterUtilisateur()}" ></b:commandButton>
+				  <b:commandButton value = "S'inscrire" style="width:400px;" action="#{utilisateurControl.ajouterUtilisateur()}" ></b:commandButton>
 				</b:form>
 		    </b:column>
 		    <b:column medium-screen="4">
