@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Remote;
 
 import be.helha.groupeB6.entities.Evenement;
+import be.helha.groupeB6.entities.Utilisateur;
 
 @Remote
 public interface IGestionEvenementEJBRemote {
@@ -16,4 +17,6 @@ public interface IGestionEvenementEJBRemote {
 	Evenement selectEvenement(Evenement e);
 	List<Evenement>afficherEvenementViaApprobation(boolean approuve);
 	Evenement modifierEvenement(Evenement e);
+	
+	List<Evenement> afficherEvenementUser(Utilisateur u);
 }

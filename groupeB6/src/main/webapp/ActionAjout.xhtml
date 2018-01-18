@@ -3,7 +3,8 @@
 xmlns:f="http://java.sun.com/jsf/core"
 xmlns:h="http://java.sun.com/jsf/html"
 xmlns:jsf="http://xmlns.jcp.org/jsf"
-xmlns:b="http://bootsfaces.net/ui">
+xmlns:b="http://bootsfaces.net/ui"
+xmlns:my="http://java.sun.com/jsf/composite/my">
 <h:head>
 <title>Creer un nouvel événement</title>
 
@@ -63,7 +64,12 @@ xmlns:b="http://bootsfaces.net/ui">
 		                look="success" />
 		    </b:carouselControl>
 		  </b:carousel>
-		  <b:commandButton class="button" value = "Proposer l'événement" action="#{evenementControl.ajouterEvenement()}"></b:commandButton>
+		  <b:commandButton name="bouton1" class="button" value = "Proposer l'événement" action="#{evenementControl.ajouterEvenement()}"></b:commandButton>
+    		<b:alert severity="info" title="Evenement ajouté"  rendered="bouton1.click()">L'évènement a bien été ajouté.</b:alert>
+		
+		
+		 
+		  
 		</b:form>
 		
 

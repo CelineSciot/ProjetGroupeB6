@@ -13,6 +13,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import be.helha.groupeB6.entities.Evenement;
 import be.helha.groupeB6.entities.UploadPage;
+import be.helha.groupeB6.entities.Utilisateur;
 import be.helha.groupeB6.sessionejb.GestionEvenementEJB;
 import be.helha.groupeB6.sessionejb.GestionUtilisateurEJB;
 
@@ -88,6 +89,11 @@ public class EvenementControl implements Serializable{
 		afficherEvenementViaApprobation(false);
 	}
 	
+	public List<Evenement> afficherEvenementUser() {
+		
+		return gestionEvenement.afficherEvenementUser(UtilisateurControl.utilisateurConnecte);
+		
+	}
 	public Evenement getEvenement() {
 		return evenement;
 	}
