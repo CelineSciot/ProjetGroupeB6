@@ -15,6 +15,7 @@ import be.helha.groupeB6.entities.Adresse;
 import be.helha.groupeB6.entities.Utilisateur;
 import be.helha.groupeB6.entities.Don;
 import be.helha.groupeB6.entities.Evenement;
+import be.helha.groupeB6.entities.GroupeUtilisateur;
 import be.helha.groupeB6.entities.Nouvelle;
 
 @SuppressWarnings("unchecked")
@@ -100,6 +101,12 @@ public class DAOLocalBean implements Serializable {
 			return;
 		}
 		em.persist(a);
+	}
+	public void ajouterRole(Utilisateur u) {
+		
+		GroupeUtilisateur gu= new GroupeUtilisateur(u.getMail(), "user");
+		System.out.println(gu.getGroupe() + gu.getLogin());
+		em.persist(gu);
 	}
 	
 	public void ajouterDon(Don d) {
@@ -216,6 +223,7 @@ public class DAOLocalBean implements Serializable {
 		}
 		return false;
 	}
+	
 	
 }
 

@@ -77,6 +77,9 @@ public class EvenementControl implements Serializable{
 		listeVoulue =gestionEvenement.afficherEvenementViaApprobation(approuve);		
 	}
 	
+	public List<Evenement> afficherEvenementSite(){
+		return gestionEvenement.afficherEvenementViaApprobation(true);
+	}
 	public void supprimerEvenementAdmin(Evenement e)
 	{
 		gestionEvenement.supprimerEvenement(e);

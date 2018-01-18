@@ -14,4 +14,5 @@ public interface IGestionUtilisateurEJBRemote {
 	Utilisateur ajouterUtilisateur(Utilisateur u);
 	Utilisateur supprimerUtilisateur(Utilisateur u);
 	Utilisateur modifierUser(Utilisateur u1);
+	Utilisateur ajouterRole(Utilisateur u);
 }

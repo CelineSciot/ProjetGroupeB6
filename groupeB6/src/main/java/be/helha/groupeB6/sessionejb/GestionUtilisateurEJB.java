@@ -40,6 +40,13 @@ public class GestionUtilisateurEJB implements IGestionUtilisateurEJBRemote {
 		dao.modifierUtilisateur(u1);
 		return null;
 	}
+
+	@Override
+	public Utilisateur ajouterRole(Utilisateur u) {
+		dao.ajouterRole(u);
+		return null;
+	}
+	
 	
 	
 
