@@ -1,21 +1,25 @@
 package be.helha.groupeB6.controller;
 
-import java.io.IOException;
+
 import java.io.Serializable;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-
 import javax.ejb.EJB;
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import be.helha.groupeB6.entities.Evenement;
 import be.helha.groupeB6.entities.UploadPage;
-import be.helha.groupeB6.entities.Utilisateur;
 import be.helha.groupeB6.sessionejb.GestionEvenementEJB;
-import be.helha.groupeB6.sessionejb.GestionUtilisateurEJB;
+
+import java.util.Properties;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 @Named
 @SessionScoped
@@ -58,6 +62,40 @@ public class EvenementControl implements Serializable{
 				evenement = new Evenement(this.dateA,this.titre,this.description,this.typeCollecte,this.objectifFinancier,false,images,this.lieu) ;
 				evenement.setUtilisateur(ConnexionController.utilisateurConnecte);
 				gestionEvenement.ajouterEvenement(evenement);
+			}
+			
+			final String username = "servicemsfmail@gmail.com";
+			final String password = "msf123456";
+
+			Properties props = new Properties();
+			props.put("mail.smtp.auth", "true");
+			props.put("mail.smtp.starttls.enable", "true");
+			props.put("mail.smtp.host", "smtp.gmail.com");
+			props.put("mail.smtp.port", "587");
+			props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+
+			Session session = Session.getInstance(props,
+			  new javax.mail.Authenticator() {
+				protected PasswordAuthentication getPasswordAuthentication() {
+					return new PasswordAuthentication(username, password);
+				}
+			  });
+
+			try {
+
+				Message message = new MimeMessage(session);
+				message.setFrom(new InternetAddress("sathvita@gmail.com"));
+				message.setRecipients(Message.RecipientType.TO,
+					InternetAddress.parse("sathvita@gmail.com"));
+				message.setSubject("Evenement créer!");
+				message.setText("Un évènement a été crée !");
+
+				Transport.send(message);
+
+				System.out.println("Done");
+
+			} catch (MessagingException e) {
+				throw new RuntimeException(e);
 			}
 		
 		this.dateA=null;
