@@ -8,9 +8,11 @@ xmlns:b="http://bootsfaces.net/ui">
 		<title>Liste des dons</title>
 		
 	</h:head>
-<h:body>
-		
-		 <b:navBar brand="MSF" brandHref="index.xhtml" fluid="true" onclick="#{connexionController.seConnecter()}">
+<h:body style="background-color:#a6a6a6;">
+
+<b:container fluid="true">
+		  <b:row>
+		     <b:navBar brand="MSF" brandHref="index.xhtml" fluid="true" onclick="#{connexionController.seConnecter()}">
 			  <b:navbarLinks>
 			    <b:dropMenu value="Gestion Evenement" rendered="#{connexionController.connect}">
 			      <b:navLink value="Gérer évenement" href="#{evenementControl.doGestion()}" ></b:navLink>
@@ -31,13 +33,20 @@ xmlns:b="http://bootsfaces.net/ui">
 			    </h:form>
 			  </b:navbarLinks>
 			</b:navBar>
-
-		<h:form>
-			<h:dataTable value = "#{utilisateurControl.doUtil()}" var = "u"		
-			   			headerClass = "UserTableHeader"
-			   			rowClasses = "UserTableOddRow,UserTableEvenRow" style="width:100%;">
-			   			
-			   			 <h:column>    				
+		  </b:row>
+		  <b:row>
+		     <b:column medium-screen="2">
+		    </b:column>
+		    <b:column medium-screen="8">
+		     <h:form>
+			  <b:dataTable value="#{utilisateurControl.doUtil()}" var="u"
+			               excel="true"
+			               csv="true"
+			               pdf="true"
+			               copy="true"
+			               print="true"
+			               row-style-class="#{car.enginePower>100?'light-power':'light'}, #{car.enginePower>100?'dark-power':'dark'} ">
+			     <h:column>    				
 						      <f:facet name = "header">Utilisateur</f:facet>    				
 						     #{u.nom}
 						 </h:column>
@@ -46,9 +55,17 @@ xmlns:b="http://bootsfaces.net/ui">
 						      <f:facet name = "header">Don</f:facet>    				
 						     #{u.dons}
 						 </h:column>
-						 
-			 </h:dataTable>
-	  		
-	  	</h:form>
+			  </b:dataTable>
+			</h:form>
+		    </b:column>
+		    <b:column medium-screen="2">
+		    </b:column>
+		  </b:row>
+		 
+		</b:container>
+		
+		
+
+	
 </h:body>
 </html>
