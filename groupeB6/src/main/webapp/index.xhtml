@@ -53,11 +53,13 @@ xmlns:b="http://bootsfaces.net/ui">
 									        <h3>#{e.titre}</h3> 
 									        <p>
 									       
-												<a id="atrigger" class="btn btn-primary" href="#amodal" data-toggle="modal">description</a>
+												<b:accordion>
+													<b:panel id="panel1" title="Description">#{e.description}</b:panel>
+												</b:accordion>
 
 									        </p> 
-									        <p>#{e.dateA}</p>
-									        <p>#{e.lieu}</p>
+									        <p class="fa fa-calendar fa-lg"> #{e.dateA}</p><br/>
+									        <p class="fa fa-map-marker fa-lg"> #{e.lieu}</p>
 									      </f:facet>
 									    </b:thumbnail>
 									  </b:column> 
@@ -69,13 +71,6 @@ xmlns:b="http://bootsfaces.net/ui">
 	  		
 	  	</h:form>
 		
-
-		<b:modal id="amodal" title="Description" value = "#{evenementControl.doUtil()}" var = "e" styleClass="modalPseudoClass">
-			<p>#{e.description}</p>
-			<f:facet name="footer">
-				<b:button value="Close" dismiss="modal" />								   
-			 </f:facet>
-		</b:modal>
 			
 		</h:body>
 </html>
